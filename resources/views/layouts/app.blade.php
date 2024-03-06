@@ -65,13 +65,13 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4 x-cloak">
             <a href="{{ route('home.index') }}" class="brand-link">
                 <i class="nav-icon fas fa-tachometer-alt elevation-3"></i>
-                <span class="brand-text">Admin dashboard</span>
+                <span class="brand-text">ترتيل</span>
             </a>
 
             @can('for-route', ['users.index'])
                 <a href="{{ route('users.index') }}" class="brand-link">
                     <i class="nav-icon fas fa-user elevation-3"></i>
-                    <span class="brand-text">Users</span>
+                    <span class="brand-text">الأستاذة</span>
                 </a>
             @endcan
 
