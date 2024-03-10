@@ -10,6 +10,11 @@ class Role extends Model
 {
     use SoftDeletes;
 
+    const ADMIN = 'admin';
+    const PARENT = 'parent';
+    const TUTOR = 'tutor';
+    const STUDENT = 'student';
+
     /**
      * The attributes that aren't mass assignable.
      *

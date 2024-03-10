@@ -49,8 +49,16 @@
                         #
                     </th>
                     <th class="sorting">
+                        <a href="#" wire:click.prevent="sortBy('name')">Name</a>
+                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                    </th>
+                    <th class="sorting">
                         <a href="#" wire:click.prevent="sortBy('email')">Email</a>
                         <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="email" />
+                    </th>
+                    <th class="sorting">
+                        <a href="#" wire:click.prevent="sortBy('phone_number')">Phone Number</a>
+                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="phone_number" />
                     </th>
                     <th class="sorting">
                         Role
@@ -73,7 +81,9 @@
                             @forelse($users as $user)
                                 <tr class="@if($loop->odd) odd @endif">
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone_number }}</td>
                                     <td>{{ $user->role->label }}</td>
                                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                     <td>

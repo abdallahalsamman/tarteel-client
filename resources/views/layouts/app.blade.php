@@ -63,25 +63,24 @@
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4 x-cloak">
-            <a href="{{ route('home.index') }}" class="brand-link">
+            <div class="brand-link">
                 <i class="nav-icon fas fa-tachometer-alt elevation-3"></i>
                 <span class="brand-text">ترتيل</span>
-            </a>
+            </div>
 
             @can('for-route', ['users.index'])
                 <a href="{{ route('users.index') }}" class="brand-link">
                     <i class="nav-icon fas fa-user elevation-3"></i>
-                    <span class="brand-text">الأستاذة</span>
+                    <span class="brand-text"> الأستاذة والمستخدمين</span>
                 </a>
             @endcan
 
-            @can('for-route', ['roles.index'])
-                <a href="{{ route('roles.index') }}" class="brand-link">
-                    <i class="nav-icon fas fa-users elevation-3"></i>
-                    <span class="brand-text">Roles</span>
+            @can('for-route', ['invoices.index'])
+                <a href="{{ route('invoices.index') }}" class="brand-link">
+                    <i class="nav-icon fas fa-user-tag elevation-3"></i>
+                    <span class="brand-text">الأدوار</span>
                 </a>
             @endcan
-
         </aside>
 
         <div class="content-wrapper">

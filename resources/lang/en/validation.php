@@ -158,6 +158,7 @@ return [
         'remember_me' => 'Remember Me',
         'image' => 'Profile Image',
         'name' => 'Name',
+        'phone_number' => 'Phone Number (00201231231234)',
         'label' => 'Label',
         'role' => 'Role',
     ],

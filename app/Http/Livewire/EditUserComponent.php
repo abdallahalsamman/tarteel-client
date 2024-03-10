@@ -18,6 +18,9 @@ class EditUserComponent extends Component
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $roles;
 
+    /** @var \Illuminate\Database\Eloquent\Collection */
+    public $parents;
+
     /**
      * Component mount.
      *
@@ -38,6 +41,10 @@ class EditUserComponent extends Component
     public function render()
     {
         $this->roles = Role::orderBy('name')->get();
+        
+        $this->parents = User::whereHas('role', function ($query) {
+            $query->where('name', Role::PARENT);
+        })->orderBy('name')->get();
 
         return view('users.edit')
             ->extends('layouts.app');
@@ -50,6 +57,12 @@ class EditUserComponent extends Component
      */
     public function update()
     {
+        $studentRoleId = \App\Models\Role::where('name', \App\Models\Role::STUDENT)->first()->id;
+
+        if ($this->user->role_id != $studentRoleId) {
+            $this->user->parent_id = null; // Reset parent_id
+        }
+
         $this->validate($this->rules());
 
         $this->user->save();
@@ -67,6 +80,13 @@ class EditUserComponent extends Component
     protected function rules()
     {
         return [
+            'user.name' => [
+                'required',
+            ],
+            'user.phone_number' => [
+                'required',
+                'numeric'
+            ],
             'user.email' => [
                 'required',
                 'email',
@@ -75,6 +95,15 @@ class EditUserComponent extends Component
             'user.role_id' => [
                 'required',
                 'exists:roles,id',
+            ],
+            'user.parent_id' => [
+                Rule::requiredIf(function () {
+                    return $this->user['role_id'] == Role::where('name', Role::STUDENT)->first()->id;
+                }),
+                'nullable',
+                Rule::exists('users', 'id')->where(function ($query) {
+                    $query->where('role_id', Role::where('name', Role::PARENT)->first()->id);
+                }),
             ],
         ];
     }

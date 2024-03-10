@@ -19,9 +19,30 @@
         <form method="POST" wire:submit.prevent="store">
             @csrf
 
+            <x-inputs.text
+                key="user.name"
+                placeholder="{{ trans('validation.attributes.name') }}"
+                autofocus
+                required="required"
+            />
+
+            <x-inputs.text
+                key="user.phone_number"
+                placeholder="{{ trans('validation.attributes.phone_number') }}"
+                autofocus
+                required="required"
+            />
+
             <x-inputs.email key="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
 
             <x-inputs.dropdown key="user.role_id" :options="$roles" textField="name" required="required" />
+
+            <x-inputs.dropdown
+                key="user.parent_id"
+                :options="$parents"
+                textField="name"
+                label="Select Parent"
+            />
 
             <div class="row">
                 <div class="offset-8 col-4">

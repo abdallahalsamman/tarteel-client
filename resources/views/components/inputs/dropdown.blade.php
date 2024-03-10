@@ -1,4 +1,4 @@
-@props(['options', 'key', 'textField'])
+@props(['options', 'key', 'textField', 'label'])
 
 <div class="input-group mb-3">
     <select
@@ -9,7 +9,7 @@
         value="{{ old($key) }}"
         placeholder="{{ trans("validation.attributes.$key") }}"
     >
-        <option value="">-- select --</option>
+        <option value="">{{ $label ?? "-- select --" }}</option>
         @foreach($options as $option)
             <option value="{{ $option->id }}">{{ $option->$textField }}</option>
         @endforeach

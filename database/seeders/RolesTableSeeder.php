@@ -20,8 +20,18 @@ class RolesTableSeeder extends Seeder
         ]);
 
         RoleFactory::new()->create([
-            'name' => 'manager',
-            'label' => 'manager',
+            'name' => 'tutor',
+            'label' => 'tutor',
+        ]);
+
+        RoleFactory::new()->create([
+            'name' => 'parent',
+            'label' => 'parent',
+        ]);
+
+        RoleFactory::new()->create([
+            'name' => 'student',
+            'label' => 'student',
         ]);
     }
 }
