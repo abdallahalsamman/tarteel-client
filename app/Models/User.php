@@ -110,6 +110,36 @@ class User extends Authenticatable
     }
 
     /**
+     * Does user have role tutor.
+     *
+     * @return bool
+     */
+    public function isTutor()
+    {
+        return $this->role->isTutor();
+    }
+
+    /**
+     * Does user have role parent.
+     *
+     * @return bool
+     */
+    public function isParent()
+    {
+        return $this->role->isParent();
+    }
+
+    /**
+     * Does user have role student.
+     *
+     * @return bool
+     */
+    public function isStudent()
+    {
+        return $this->role->isStudent();
+    }
+
+    /**
      * Does user have permission.
      *
      * @param  string  $permission

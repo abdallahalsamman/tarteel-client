@@ -112,6 +112,36 @@ class Role extends Model
     }
 
     /**
+     * Is this an tutor role.
+     *
+     * @return bool
+     */
+    public function isTutor()
+    {
+        return $this->name === 'tutor';
+    }
+
+    /**
+     * Is this an parent role.
+     *
+     * @return bool
+     */
+    public function isParent()
+    {
+        return $this->name === 'parent';
+    }
+
+    /**
+     * Is this an student role.
+     *
+     * @return bool
+     */
+    public function isStudent()
+    {
+        return $this->name === 'student';
+    }
+
+    /**
      * Remove permissions where allowed is false.
      *
      * @param  array  $permissions

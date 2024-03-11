@@ -3,11 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Role;
+use Livewire\Component;
+use Illuminate\Validation\Rule;
 use App\Rules\OwnerRestrictedRule;
 use App\Rules\PermissionExistsRule;
 use App\ViewModels\SaveRoleViewModel;
-use Illuminate\Validation\Rule;
-use Livewire\Component;
 
 class CreateRoleComponent extends Component
 {

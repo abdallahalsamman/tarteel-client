@@ -68,19 +68,19 @@
                 <span class="brand-text">ترتيل</span>
             </div>
 
-            @can('for-route', ['users.index'])
+            @if(auth()->user()->isAdmin())
                 <a href="{{ route('users.index') }}" class="brand-link">
                     <i class="nav-icon fas fa-user elevation-3"></i>
                     <span class="brand-text"> الأستاذة والمستخدمين</span>
                 </a>
-            @endcan
+            @endif
 
-            @can('for-route', ['invoices.index'])
+            @if(auth()->user()->role->isTutor())
                 <a href="{{ route('invoices.index') }}" class="brand-link">
                     <i class="nav-icon fas fa-user-tag elevation-3"></i>
                     <span class="brand-text">الأدوار</span>
                 </a>
-            @endcan
+            @endif
         </aside>
 
         <div class="content-wrapper">

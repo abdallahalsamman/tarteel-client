@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\RoleFactory;
 use Illuminate\Database\Seeder;
+use Database\Factories\RoleFactory;
 
 class RolesTableSeeder extends Seeder
 {

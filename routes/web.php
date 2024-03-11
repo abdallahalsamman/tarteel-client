@@ -38,6 +38,7 @@ Route::get('confirmed-emails/store', [ConfirmedEmailController::class, 'store'])
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
     Route::get('sessions', [HomeController::class, 'index'])->name('tutoring-sessions.index');
+    Route::get('invoices', [HomeController::class, 'index'])->name('invoices.index');
     Route::get('invoice', [HomeController::class, 'index'])->name('invoice.index');
 
     Route::group(
