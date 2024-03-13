@@ -17,7 +17,7 @@ class HasLivewireAuthTest extends TestCase
     public function guest_cannot_access_component()
     {
         $customClass = new class() {
-            use HasLivewireAuth;
+            
         };
 
         $this->expectException(AuthenticationException::class);
@@ -31,7 +31,7 @@ class HasLivewireAuthTest extends TestCase
         $this->withoutExceptionHandling();
 
         $customClass = new class() {
-            use HasLivewireAuth;
+            
         };
 
         $customClass->permissionName = 'users.index';
@@ -47,7 +47,7 @@ class HasLivewireAuthTest extends TestCase
     public function route_name_is_extracted_from_component_name()
     {
         $customClass = new class() {
-            use HasLivewireAuth;
+            
 
             public static function getName()
             {
@@ -66,7 +66,7 @@ class HasLivewireAuthTest extends TestCase
     public function set_model_method_is_called_if_exists()
     {
         $customClass = new class() {
-            use HasLivewireAuth;
+            
 
             /** @var bool */
             public $called = false;

@@ -14,8 +14,6 @@ use App\Providers\AppServiceProvider;
 
 class CreateUserComponent extends Component
 {
-    use HasLivewireAuth;
-
     /** @var \App\Models\User */
     public $user;
 

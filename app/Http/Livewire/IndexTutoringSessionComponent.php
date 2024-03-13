@@ -2,18 +2,22 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Role;
+use App\Models\TutoringSession;
 use Livewire\Component;
 
-class IndexRoleComponent extends Component
+class IndexTutoringSessionComponent extends Component
 {
     use HasTable;
 
     /** @var string */
-    public $sortField = 'name';
+    public $sortField = '';
 
+    // index-review
     /** @var array */
     protected $queryString = ['perPage', 'sortField', 'sortDirection', 'search'];
+
+    /** @var array */
+    protected $allowedRoles = [];
 
     /** @var array */
     protected $listeners = ['entity-deleted' => 'render'];
@@ -25,22 +29,13 @@ class IndexRoleComponent extends Component
      */
     public function render()
     {
-        $roles = Role::filter([
+        // index-review-5
+        $tutoringsessions = TutoringSession::filter([
             'search' => $this->search,
             'orderByField' => [$this->sortField, $this->sortDirection],
         ])->paginate($this->perPage);
 
-        return view('roles.index', ['roles' => $roles])
+        return view('tutoring-sessions.index', ['tutoringSessions' => $tutoringsessions])
             ->extends('layouts.app');
-    }
-
-    /**
-     * Reset pagination back to page one if search query is changed.
-     *
-     * @return void
-     */
-    public function updatedSearch()
-    {
-        $this->resetPage();
     }
 }

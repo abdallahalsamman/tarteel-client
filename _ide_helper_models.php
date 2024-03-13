@@ -1,6 +1,7 @@
 <?php
 
 // @formatter:off
+// phpcs:ignoreFile
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -20,7 +21,7 @@ namespace App\Models{
  * @property string $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
  * @property-read int|null $roles_count
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newQuery()
@@ -64,14 +65,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \App\Filters\RoleFilter|Role filter(array $filters)
  * @method static \App\Filters\RoleFilter|Role newModelQuery()
  * @method static \App\Filters\RoleFilter|Role newQuery()
- * @method static \Illuminate\Database\Query\Builder|Role onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role onlyTrashed()
  * @method static \App\Filters\RoleFilter|Role orderByField($field, $direction)
  * @method static \App\Filters\RoleFilter|Role query()
  * @method static \App\Filters\RoleFilter|Role search($term = null)
@@ -81,10 +82,37 @@ namespace App\Models{
  * @method static \App\Filters\RoleFilter|Role whereLabel($value)
  * @method static \App\Filters\RoleFilter|Role whereName($value)
  * @method static \App\Filters\RoleFilter|Role whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|Role withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Role withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role withoutTrashed()
  */
 	class Role extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TutoringSession
+ *
+ * @property int $id
+ * @property string $comment
+ * @property int $duration
+ * @property int $paid
+ * @property int $student_id
+ * @property int $tutor_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession wherePaid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereStudentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereTutorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TutoringSession whereUpdatedAt($value)
+ */
+	class TutoringSession extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -102,15 +130,18 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $name
+ * @property string|null $phone_number
+ * @property int|null $parent_id
  * @property-read string $image_file
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read User $owner
  * @property-read \App\Models\Role $role
  * @method static \App\Filters\UserFilter|User filter(array $filters)
  * @method static \App\Filters\UserFilter|User newModelQuery()
  * @method static \App\Filters\UserFilter|User newQuery()
- * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User onlyTrashed()
  * @method static \App\Filters\UserFilter|User orderByField($field, $direction)
  * @method static \App\Filters\UserFilter|User query()
  * @method static \App\Filters\UserFilter|User roleId($roleId = null)
@@ -121,13 +152,16 @@ namespace App\Models{
  * @method static \App\Filters\UserFilter|User whereEmailVerifiedAt($value)
  * @method static \App\Filters\UserFilter|User whereId($value)
  * @method static \App\Filters\UserFilter|User whereImage($value)
+ * @method static \App\Filters\UserFilter|User whereName($value)
  * @method static \App\Filters\UserFilter|User whereOwnerId($value)
+ * @method static \App\Filters\UserFilter|User whereParentId($value)
  * @method static \App\Filters\UserFilter|User wherePassword($value)
+ * @method static \App\Filters\UserFilter|User wherePhoneNumber($value)
  * @method static \App\Filters\UserFilter|User whereRememberToken($value)
  * @method static \App\Filters\UserFilter|User whereRoleId($value)
  * @method static \App\Filters\UserFilter|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
  */
 	class User extends \Eloquent {}
 }

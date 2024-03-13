@@ -1,19 +1,22 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\ConfirmedEmailController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Profile\UserController as ProfileUserController;
-use App\Http\Livewire\AcceptedInvitationComponent;
-use App\Http\Livewire\CreateRoleComponent;
-use App\Http\Livewire\CreateUserComponent;
 use App\Http\Livewire\EditRoleComponent;
 use App\Http\Livewire\EditUserComponent;
 use App\Http\Livewire\IndexRoleComponent;
 use App\Http\Livewire\IndexUserComponent;
+use App\Http\Livewire\CreateRoleComponent;
+use App\Http\Livewire\CreateUserComponent;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ConfirmedEmailController;
+use App\Http\Livewire\AcceptedInvitationComponent;
+use App\Http\Livewire\EditTutoringSessionComponent;
+use App\Http\Livewire\IndexTutoringSessionComponent;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Livewire\CreateTutoringSessionComponent;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Profile\UserController as ProfileUserController;
 
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -37,7 +40,11 @@ Route::get('confirmed-emails/store', [ConfirmedEmailController::class, 'store'])
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
-    Route::get('sessions', [HomeController::class, 'index'])->name('tutoring-sessions.index');
+
+    Route::get('tutoring-sessions', IndexTutoringSessionComponent::class)->name('tutoring-sessions.index');
+    Route::get('tutoring-sessions/create', CreateTutoringSessionComponent::class)->name('tutoring-sessions.create');
+    Route::get('tutoring-sessions/{id}/edit', EditTutoringSessionComponent::class)->name('tutoring-sessions.edit');
+
     Route::get('invoices', [HomeController::class, 'index'])->name('invoices.index');
     Route::get('invoice', [HomeController::class, 'index'])->name('invoice.index');
 

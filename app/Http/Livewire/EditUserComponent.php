@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class EditUserComponent extends Component
 {
-    use HasLivewireAuth;
+    
 
     /** @var \App\Models\User */
     public User $user;

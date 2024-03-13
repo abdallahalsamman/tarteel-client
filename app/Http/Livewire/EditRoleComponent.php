@@ -11,7 +11,7 @@ use App\ViewModels\SaveRoleViewModel;
 
 class EditRoleComponent extends Component
 {
-    use HasLivewireAuth;
+    
 
     /** @var \App\Models\Role */
     public Role $role;

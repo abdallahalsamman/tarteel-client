@@ -15,7 +15,9 @@ class CreateTutoringSessionsTable extends Migration
     {
         Schema::create('tutoring_sessions', function (Blueprint $table) {
             $table->id();
+            $table->string('book');
             $table->string('comment');
+            $table->date('session_date');
             $table->integer('duration');
             $table->boolean('paid');
             $table->foreignId('student_id')->constrained('users');

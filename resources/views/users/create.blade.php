@@ -1,17 +1,17 @@
 <div>
 @section('title')
-    Create New User
+    إنشاء مستخدم جديد
 @endsection
 
 @section('content-header')
 <x-content-header>
-    Create New User
+    إنشاء مستخدم جديد
 </x-content-header>
 @endsection
 
 <x-savings.content>
     <x-slot name="card_header">
-        <h3 class="card-title">Create New User</h3>
+        <h3 class="card-title">إنشاء مستخدم جديد</h3>
         <a href="{{ route('users.index') }}" class="float-right">Back</a>
     </x-slot>
 
@@ -35,13 +35,13 @@
 
             <x-inputs.email key="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
 
-            <x-inputs.dropdown key="user.role_id" :options="$roles" textField="name" required="required" />
+            <x-inputs.dropdown key="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
 
             <x-inputs.dropdown
                 key="user.parent_id"
                 :options="$parents"
                 textField="name"
-                label="Select Parent"
+                label="العائلة"
             />
 
             <div class="row">

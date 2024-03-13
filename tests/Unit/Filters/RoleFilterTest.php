@@ -24,8 +24,8 @@ class RoleFilterTest extends TestCase
         ]);
 
         $result = Role::filter([
-                'search' => 'manager',
-            ])->get();
+            'search' => 'manager',
+        ])->get();
 
         $this->assertCount(1, $result);
 
@@ -44,8 +44,8 @@ class RoleFilterTest extends TestCase
         ]);
 
         $result = Role::filter([
-                'orderByField' => ['name', 'asc'],
-            ])->get();
+            'orderByField' => ['name', 'asc'],
+        ])->get();
 
         $this->assertTrue(collect([$manager->id, $writer->id]) == $result->pluck('id'));
     }

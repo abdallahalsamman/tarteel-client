@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class DeleteUserComponent extends Component
 {
-    use CanFlash, HasLivewireAuth;
+    use CanFlash;
 
     /** @var \App\Models\User */
     public $user;

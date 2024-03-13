@@ -1,10 +1,10 @@
 @section('title')
-    {{ DummyTextPlu }}
+    الحصص
 @endsection
 
 @section('content-header')
 <x-content-header>
-    {{ DummyTextPlu }}
+    الحصص
 </x-content-header>
 @endsection
 
@@ -12,9 +12,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List of {{ DummyTextPlu }}</h3>
-                @if(auth()->user()->isAdmin())
-                    <a href="{{ route('{{ dummyTextPlu }}.create') }}" class="float-right">Add New</a>
+                <h3 class="card-title">List of TutoringSessions</h3>
+                @if(auth()->user()->isAdmin() || auth()->user()->isTutor())
+                    <a href="{{ route('tutoring-sessions.create') }}" class="float-right">Add New</a>
                 @endif
             </div>
 
@@ -50,28 +50,30 @@
                                     <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="created_at" />
                                 </th>
 
+                                @if(auth()->user()->isAdmin())
                                 <th class="sorting">
                                     Edit
                                 </th>
                                 <th class="sorting">
                                     Delete
                                 </th>
+                                @endif
                             </tr>
                         </x-slot>
 
                         <x-slot name="tbody">
-                            @forelse(${{ dummyTextPlu }} as ${{ dummyText }})
+                            @forelse($tutoringSessions as $tutoringsession)
                                 <tr class="@if($loop->odd) odd @endif">
                                     <td>{{ $loop->iteration }}</td>
                                     // index-review
+                                    @if(auth()->user()->isAdmin())
                                     <td>
-                                        @if(auth()->user()->isAdmin())
-                                            <a href="{{ route('{{ dummyTextPlu }}.edit', ${{ dummyText }}) }}"><span class="fas fa-edit"></a></span>
-                                        @endif
+                                            <a href="{{ route('tutoring-sessions.edit', $tutoringsession) }}"><span class="fas fa-edit"></a></span>
                                     </td>
                                     <td>
-                                        <livewire:delete-{{ dummyText }}-component :{{ dummyText }}="${{ dummyText }}" :key="'{{ dummyText }}-'.${{ dummyText }}->id" />
+                                        <livewire:delete-tutoringsession-component :tutoringsession="$tutoringsession" :key="'tutoring-sessions-'.$tutoringsession->id" />
                                     </td>
+                                    @endif
                                 </tr>
                             @empty
                                 <tr>
@@ -83,9 +85,9 @@
                     </x-tables.table>
 
                     <div class="row">
-                        <x-tables.entries-data :data="${{ dummyTextPlu }}" />
+                        <x-tables.entries-data :data="$tutoringSessions" />
 
-                        <x-tables.pagination :data="${{ dummyTextPlu }}" />
+                        <x-tables.pagination :data="$tutoringSessions" />
                     </div>
                 </div>
             </div>

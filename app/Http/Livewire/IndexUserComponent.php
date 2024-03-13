@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class IndexUserComponent extends Component
 {
-    use HasTable, HasLivewireAuth;
+    use HasTable;
 
     /** @var string */
     public $sortField = 'email';

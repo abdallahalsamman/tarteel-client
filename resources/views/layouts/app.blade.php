@@ -75,12 +75,10 @@
                 </a>
             @endif
 
-            @if(auth()->user()->role->isTutor())
-                <a href="{{ route('invoices.index') }}" class="brand-link">
-                    <i class="nav-icon fas fa-user-tag elevation-3"></i>
-                    <span class="brand-text">الأدوار</span>
-                </a>
-            @endif
+            <a href="{{ route('tutoring-sessions.index') }}" class="brand-link">
+                <i class="nav-icon fas fa-user-tag elevation-3"></i>
+                <span class="brand-text">الحصص</span>
+            </a>
         </aside>
 
         <div class="content-wrapper">

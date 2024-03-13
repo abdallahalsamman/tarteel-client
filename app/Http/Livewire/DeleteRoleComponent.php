@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class DeleteRoleComponent extends Component
 {
-    use CanFlash, HasLivewireAuth;
+    use CanFlash;
 
     /** @var \App\Models\Role */
     public $role;
