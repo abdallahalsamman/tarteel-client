@@ -14,7 +14,7 @@
         "intervention/image": "^3.4",
         "laravel/framework": "^10.0",
         "laravel/ui": "^4.0",
-        "livewire/livewire": "^2.12",
+        "livewire/livewire": "^3.0",
         "predis/predis": "^2.2",
         "illuminate/support": "^10.0",
         "illuminate/console": "^10.0"
