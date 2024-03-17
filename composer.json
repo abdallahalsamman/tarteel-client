@@ -8,33 +8,29 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "doctrine/dbal": "^3.3",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.4",
-        "intervention/image": "^2.7",
-        "laravel/framework": "^8.83",
-        "laravel/ui": "^3.4",
+        "php": "*",
+        "doctrine/dbal": "^3.8",
+        "guzzlehttp/guzzle": "^7.8",
+        "intervention/image": "^3.4",
+        "laravel/framework": "^10.0",
+        "laravel/ui": "^4.0",
         "livewire/livewire": "^2.12",
-        "predis/predis": "^1.1"
+        "predis/predis": "^2.2",
+        "illuminate/support": "^10.0",
+        "illuminate/console": "^10.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
-        "barryvdh/laravel-ide-helper": "^2.12",
-        "brainmaestro/composer-git-hooks": "^2.8",
-        "brianium/paratest": "^6.4",
-        "facade/ignition": "^2.17",
-        "fakerphp/faker": "^1.18",
-        "jasonmccreary/laravel-test-assertions": "^2.0",
-        "jcergolj/laravel-view-test-assertions": "^2.4",
-        "johnkary/phpunit-speedtrap": "^4.0",
-        "laravel/tinker": "^2.7",
-        "matt-allan/laravel-code-style": "^0.7.0",
-        "mockery/mockery": "^1.5",
-        "nunomaduro/collision": "*",
-        "nunomaduro/phpinsights": "^2.1",
-        "phpunit/phpunit": "^9.5"
+        "barryvdh/laravel-debugbar": "^3.7",
+        "barryvdh/laravel-ide-helper": "^2.14",
+        "brianium/paratest": "^7.0",
+        "spatie/laravel-ignition": "^2.0",
+        "fakerphp/faker": "^1.23",
+        "jasonmccreary/laravel-test-assertions": "^2.2",
+        "jcergolj/laravel-view-test-assertions": "^2.8",
+        "laravel/tinker": "^2.9",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -48,14 +44,6 @@
         "laravel": {
             "dont-discover": [
                 "barryvdh/laravel-ide-helper"
-            ]
-        },
-        "hooks": {
-            "pre-commit": [
-                "STAGED_FILES=$(git diff --name-only --cached)",
-                "vendor/bin/php-cs-fixer fix",
-                "for FILE in $STAGED_FILES ; do git add $FILE; done",
-                "php artisan insights --no-interaction --min-quality=80 --min-complexity=80 --min-architecture=80 --min-style=80"
             ]
         }
     },
@@ -73,27 +61,12 @@
         },
         "files": ["tests/helpers.php"]
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
-        ],
-        "cghooks": "vendor/bin/cghooks"
+        ]
     }
 }
