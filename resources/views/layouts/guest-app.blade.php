@@ -13,10 +13,9 @@
         @yield('content')
     </div>
     
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    {{-- @vite('resources/js/app.js') --}}
 </body>
 
 </html>

@@ -56,7 +56,7 @@
                                 <td>
                                     <label class="form-check-label">
                                         <input
-                                                wire:model.defer="permissions.{{ $id }}.owner_restricted"
+                                                wire:model="permissions.{{ $id }}.owner_restricted"
                                                 class="owner-restricted-{{ $group }}"
                                                 type="checkbox"
                                                 @click="checkAll('select-all-owner-restricted-{{ $group }}', 'owner-restricted-{{ $group }}')"

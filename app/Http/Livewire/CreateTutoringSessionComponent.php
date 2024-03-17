@@ -10,7 +10,7 @@ class CreateTutoringSessionComponent extends Component
 {
     /** @var \App\Models\TutoringSession */
     public $tutoringSession;
-    public $tutors, $parents, $children;
+    public $tutors, $parents, $children, $duration;
     public $durations = [
         ['id' => 30, 'title' => '30 minutes'],
         ['id' => 60, 'title' => '1 hour'],
@@ -47,7 +47,7 @@ class CreateTutoringSessionComponent extends Component
 
     public function updatedTutoringSessionParentId($value)
     {
-        $this->children = User::find($value)->children()->get();
+        $this->children = User::find($value)->children();
     }
 
     /**

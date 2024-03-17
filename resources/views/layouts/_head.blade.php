@@ -11,6 +11,5 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @livewireStyles
-
-    @yield('styles')
+    {{-- @vite(['resources/js/app.js']) --}}
 </head>

@@ -3,7 +3,7 @@
 <div class="input-group mb-3">
     <input
         {{ $attributes }}
-        wire:model.defer="{{ $key }}"
+        wire:model="{{ $key }}"
         type="file"
         name="{{ $key }}"
         class="form-control @errorClass($key)"

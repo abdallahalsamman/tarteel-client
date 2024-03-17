@@ -5,9 +5,9 @@
 
 <body
     class="hold-transition sidebar-mini"
-    x-data="window.nav.make()"
+    {{-- x-data="window.nav.make()" --}}
     :class="{ 'sidebar-collapse' : collapsed }"
-    x-on:resize.window="resize()"
+    {{-- x-on:resize.window="resize()" --}}
     x-ref="body"
 >
 
@@ -16,8 +16,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a
-                        x-on:click="click()"
-                        @click.away="clickAway()"
+                        {{-- x-on:click="click()" --}}
+                        {{-- @click.away="clickAway()" --}}
                         class="nav-link"
                         href="#"
                     >
@@ -99,13 +99,11 @@
         </footer>
     </div>
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- @yield('scripts') --}}
 
-    @yield('scripts')
-
-    @stack('scripts')
+    {{-- @stack('scripts') --}}
 </body>
 
 </html>
