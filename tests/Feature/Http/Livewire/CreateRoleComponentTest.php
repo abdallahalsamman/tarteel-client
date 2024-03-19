@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\CreateRoleComponent;
+use App\Livewire\CreateRoleComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Models\Role;
 use Database\Factories\PermissionFactory;
@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\CreateRoleComponent */
+/** @see \App\Livewire\CreateRoleComponent */
 class CreateRoleComponentTest extends TestCase
 {
     use RefreshDatabase;

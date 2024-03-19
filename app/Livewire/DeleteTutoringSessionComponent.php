@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 
@@ -27,7 +27,7 @@ class DeleteTutoringSessionComponent extends Component
 
         $this->tutoringsession->delete();
 
-        $this->emit('entity-deleted');
+        $this->dispatch('entity-deleted');
 
         $this->dispatchFlashSuccessEvent('TutoringSession has been successfully deleted.');
     }

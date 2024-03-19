@@ -15,7 +15,7 @@
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit.prevent="update">
+        <form method="POST" wire:submit="update">
             @csrf
 
             <x-inputs.text

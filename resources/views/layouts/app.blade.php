@@ -99,7 +99,8 @@
         </footer>
     </div>
 
-    {{-- @livewireScripts --}}
+    @livewireScriptConfig
+    @livewireScripts
 
     {{-- @yield('scripts') --}}
 

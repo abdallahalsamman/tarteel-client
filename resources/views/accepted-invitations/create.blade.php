@@ -6,7 +6,7 @@
     <div class="card-body login-card-body">
         <p class="login-box-msg">Create New Account</p>
 
-        <form method="POST" wire:submit.prevent="submit">
+        <form method="POST" wire:submit="submit">
             @csrf
 
             <x-inputs.password key="newPassword" />

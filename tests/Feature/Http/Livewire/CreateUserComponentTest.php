@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\CreateUserComponent;
+use App\Livewire\CreateUserComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Mail\InvitationMail;
 use App\Models\User;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\CreateUserComponent */
+/** @see \App\Livewire\CreateUserComponent */
 class CreateUserComponentTest extends TestCase
 {
     use RefreshDatabase;

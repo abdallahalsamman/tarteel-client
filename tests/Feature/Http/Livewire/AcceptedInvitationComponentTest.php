@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Livewire;
 
 use App\Http\HasAcceptedInvitationAuth;
-use App\Http\Livewire\AcceptedInvitationComponent;
+use App\Livewire\AcceptedInvitationComponent;
 use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ use Livewire\Livewire;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\AcceptedInvitationComponent */
+/** @see \App\Livewire\AcceptedInvitationComponent */
 class AcceptedInvitationComponentTest extends TestCase
 {
     use RefreshDatabase;

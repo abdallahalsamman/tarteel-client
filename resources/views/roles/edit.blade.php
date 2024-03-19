@@ -15,7 +15,7 @@
     </x-slot>
 
     <x-slot name="card_body">
-        <form wire:submit.prevent="update" method="POST" x-data="window.permissions()">
+        <form wire:submit="update" method="POST" x-data="window.permissions()">
             @csrf
             <x-inputs.text key="role.name" autofocus placeholder="{{ trans('validation.attributes.role') }}"/>
             <x-inputs.text key="role.label" required="required"
@@ -45,7 +45,7 @@
                                 <td>
                                     <label class="form-check-label">
                                         <input
-                                                wire:model.lazy="permissions.{{ $id }}.allowed"
+                                                wire:model.blur="permissions.{{ $id }}.allowed"
                                                 class="permission-{{ $group }}"
                                                 type="checkbox"
                                                 @click="checkAll('select-all-permissions-{{ $group }}', 'permission-{{ $group }}')"

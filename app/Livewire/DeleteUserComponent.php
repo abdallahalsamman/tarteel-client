@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
@@ -32,6 +32,6 @@ class DeleteUserComponent extends Component
 
         $this->user->delete();
 
-        $this->emit('entity-deleted');
+        $this->dispatch('entity-deleted');
     }
 }

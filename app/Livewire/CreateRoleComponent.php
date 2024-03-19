@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Role;
 use Livewire\Component;
@@ -9,12 +9,10 @@ use App\Rules\OwnerRestrictedRule;
 use App\Rules\PermissionExistsRule;
 use App\ViewModels\SaveRoleViewModel;
 
-class EditRoleComponent extends Component
+class CreateRoleComponent extends Component
 {
-    
-
     /** @var \App\Models\Role */
-    public Role $role;
+    public $role;
 
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $permissions;
@@ -22,12 +20,11 @@ class EditRoleComponent extends Component
     /**
      * Component mount.
      *
-     * @param  \App\Models\Role  $role
      * @return void
      */
-    public function mount(Role $role)
+    public function mount()
     {
-        $this->permissions = SaveRoleViewModel::buildRolePermissions($role->id);
+        $this->permissions = SaveRoleViewModel::buildRolePermissions();
     }
 
     /**
@@ -37,28 +34,28 @@ class EditRoleComponent extends Component
      */
     public function render()
     {
-        return view('roles.edit', [
-            'role' => $this->role,
+        return view('roles.create', [
             'permissionGroups' => SaveRoleViewModel::groupPermissions($this->permissions),
         ])->extends('layouts.app');
     }
 
     /**
-     * Update existing role.
+     * Store new role.
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function store()
     {
-        $this->validate($this->rules(), [], $this->attributes());
+        $this->validate(null, [], $this->attributes());
 
-        $this->role->save();
+        $role = Role::create([
+            'name' => $this->role['name'],
+            'label' => $this->role['label'],
+        ]);
 
-        if (! $this->role->isAdmin()) {
-            $this->role->updatePermissions($this->permissions);
-        }
+        $role->createPermissions($this->permissions);
 
-        msg_success('Role has been successfully updated.');
+        msg_success('Role has been successfully created.');
 
         return redirect()->route('roles.index');
     }
@@ -73,8 +70,7 @@ class EditRoleComponent extends Component
         return [
             'role.name' => [
                 'required',
-                Rule::unique('roles', 'name')->ignore($this->role->id),
-                'unique:roles,id,'.$this->role->id,
+                Rule::unique('roles', 'name'),
             ],
             'role.label' => [
                 'required',
@@ -95,7 +91,7 @@ class EditRoleComponent extends Component
      *
      * @return array
      */
-    protected function attributes()
+    private function attributes()
     {
         $attributes = [];
         $iteration = 1;

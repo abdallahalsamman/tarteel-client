@@ -3,15 +3,15 @@
 namespace Tests\Feature\Http\Livewire;
 
 use App\Http\Livewire\HasLivewireAuth;
-use App\Http\Livewire\HasTable;
-use App\Http\Livewire\IndexRoleComponent;
+use App\Livewire\HasTable;
+use App\Livewire\IndexRoleComponent;
 use Database\Factories\RoleFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\IndexRoleComponent */
+/** @see \App\Livewire\IndexRoleComponent */
 class IndexRoleComponentTest extends TestCase
 {
     use RefreshDatabase;

@@ -1,4 +1,4 @@
-<form method="POST" wire:submit.prevent="submit" x-show="show" x-transition:enter="fade">
+<form method="POST" wire:submit="submit" x-show="show" x-transition:enter="fade">
     @csrf
 
     <x-inputs.password key="newPassword" autofocus />

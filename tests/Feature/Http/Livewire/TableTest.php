@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\HasTable;
+use App\Livewire\HasTable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\HasTable */
+/** @see \App\Livewire\HasTable */
 class TableTest extends TestCase
 {
     use RefreshDatabase;

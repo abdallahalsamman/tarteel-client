@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
@@ -34,7 +34,7 @@ class DeleteRoleComponent extends Component
 
         $this->role->delete();
 
-        $this->emit('entity-deleted');
+        $this->dispatch('entity-deleted');
 
         $this->dispatchFlashSuccessEvent('Role has been successfully deleted.');
     }

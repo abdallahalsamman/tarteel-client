@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Livewire\Profile;
 
 use App\Events\ProfileImageUploaded;
-use App\Http\Livewire\Profile\UpdateImage;
+use App\Livewire\Profile\UpdateImage;
 use Database\Factories\UserFactory;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\Profile\UpdateImage */
+/** @see \App\Livewire\Profile\UpdateImage */
 class UpdateImageTest extends TestCase
 {
     use RefreshDatabase;

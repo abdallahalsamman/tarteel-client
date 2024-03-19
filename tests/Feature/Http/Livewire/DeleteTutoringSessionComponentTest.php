@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\DeleteTutoringSessionComponent;
+use App\Livewire\DeleteTutoringSessionComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Models\TutoringSession;
 use Database\Factories\TutoringSessionFactory;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\DeleteTutoringSessionComponent */
+/** @see \App\Livewire\DeleteTutoringSessionComponent */
 class DeleteTutoringSessionComponentTest extends TestCase
 {
     use RefreshDatabase;
@@ -40,7 +40,7 @@ class DeleteTutoringSessionComponentTest extends TestCase
         Livewire::actingAs($this->admin)
             ->test(DeleteTutoringSessionComponent::class, ['tutoring-sessions' =>  $tutoringsession])
             ->call('destroy')
-            ->assertEmitted('entity-deleted')
+            ->assertDispatched('entity-deleted')
             ->assertDispatchedBrowserEvent('flash');
 
         $this->assertNull(TutoringSession::find($tutoringsession->id));

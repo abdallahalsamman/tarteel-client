@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\EditTutoringSessionComponent;
+use App\Livewire\EditTutoringSessionComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Models\TutoringSession;
 use Database\Factories\TutoringSessionFactory;
@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\EditTutoringSessionComponent */
+/** @see \App\Livewire\EditTutoringSessionComponent */
 class EditTutoringSessionComponentTest extends TestCase
 {
     use RefreshDatabase;

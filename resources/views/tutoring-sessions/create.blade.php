@@ -16,7 +16,7 @@
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit.prevent="store">
+        <form method="POST" wire:submit="store">
             @csrf
 
             <x-inputs.dropdown label="الأستاذ" textField="name" :options="$tutors" key="tutoringSession.tutor_id" />

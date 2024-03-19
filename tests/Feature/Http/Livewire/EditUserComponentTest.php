@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\EditUserComponent;
+use App\Livewire\EditUserComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Models\User;
 use Database\Factories\RoleFactory;
@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\EditUserComponent */
+/** @see \App\Livewire\EditUserComponent */
 class EditUserComponentTest extends TestCase
 {
     use RefreshDatabase;

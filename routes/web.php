@@ -1,19 +1,19 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\EditRoleComponent;
-use App\Http\Livewire\EditUserComponent;
-use App\Http\Livewire\IndexRoleComponent;
-use App\Http\Livewire\IndexUserComponent;
-use App\Http\Livewire\CreateRoleComponent;
-use App\Http\Livewire\CreateUserComponent;
+use App\Livewire\EditRoleComponent;
+use App\Livewire\EditUserComponent;
+use App\Livewire\IndexRoleComponent;
+use App\Livewire\IndexUserComponent;
+use App\Livewire\CreateRoleComponent;
+use App\Livewire\CreateUserComponent;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ConfirmedEmailController;
-use App\Http\Livewire\AcceptedInvitationComponent;
-use App\Http\Livewire\EditTutoringSessionComponent;
-use App\Http\Livewire\IndexTutoringSessionComponent;
+use App\Livewire\AcceptedInvitationComponent;
+use App\Livewire\EditTutoringSessionComponent;
+use App\Livewire\IndexTutoringSessionComponent;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Livewire\CreateTutoringSessionComponent;
+use App\Livewire\CreateTutoringSessionComponent;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Profile\UserController as ProfileUserController;

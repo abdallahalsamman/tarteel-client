@@ -3,15 +3,15 @@
 namespace Tests\Feature\Http\Livewire;
 
 use App\Http\Livewire\HasLivewireAuth;
-use App\Http\Livewire\HasTable;
-use App\Http\Livewire\IndexTutoringSessionComponent;
+use App\Livewire\HasTable;
+use App\Livewire\IndexTutoringSessionComponent;
 use Database\Factories\TutoringSessionFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\IndexTutoringSessionComponent */
+/** @see \App\Livewire\IndexTutoringSessionComponent */
 class IndexTutoringSessionComponentTest extends TestCase
 {
     use RefreshDatabase;

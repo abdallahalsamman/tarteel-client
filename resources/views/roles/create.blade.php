@@ -15,7 +15,7 @@
     </x-slot>
 
     <x-slot name="card_body">
-        <form wire:submit.prevent="store" method="POST" x-data="window.permissions()">
+        <form wire:submit="store" method="POST" x-data="window.permissions()">
             @csrf
 
             <x-inputs.text key="role.name" autofocus placeholder="{{ trans('validation.attributes.role') }}"/>

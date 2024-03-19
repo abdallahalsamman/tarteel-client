@@ -11,13 +11,13 @@
         "php": "*",
         "doctrine/dbal": "^3.8",
         "guzzlehttp/guzzle": "^7.8",
+        "illuminate/console": "^10.0",
+        "illuminate/support": "^10.0",
         "intervention/image": "^3.4",
         "laravel/framework": "^10.0",
         "laravel/ui": "^4.0",
-        "livewire/livewire": "^3.0",
-        "predis/predis": "^2.2",
-        "illuminate/support": "^10.0",
-        "illuminate/console": "^10.0"
+        "livewire/livewire": "^3.4",
+        "predis/predis": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

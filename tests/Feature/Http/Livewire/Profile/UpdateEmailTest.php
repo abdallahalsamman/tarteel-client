@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire\Profile;
 
-use App\Http\Livewire\Profile\UpdateEmail;
+use App\Livewire\Profile\UpdateEmail;
 use App\Mail\NewEmailConfirmationMail;
 use Database\Factories\UserFactory;
 use Illuminate\Auth\AuthenticationException;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\Profile\UpdateEmail */
+/** @see \App\Livewire\Profile\UpdateEmail */
 class UpdateEmailTest extends TestCase
 {
     use RefreshDatabase;

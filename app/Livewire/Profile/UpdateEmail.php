@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Profile;
+namespace App\Livewire\Profile;
 
-use App\Http\Livewire\CanFlash;
+use App\Livewire\CanFlash;
 use App\Mail\NewEmailConfirmationMail;
 use App\Rules\PasswordCheckRule;
 use Illuminate\Auth\AuthenticationException;
@@ -62,7 +62,7 @@ class UpdateEmail extends Component
             "Confirmation email was sent to {$this->email}. Please verify your new email address."
         );
 
-        $this->dispatchBrowserEvent('close');
+        $this->dispatch('close');
 
         $this->clearInput();
     }

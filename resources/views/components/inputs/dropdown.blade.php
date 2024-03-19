@@ -3,7 +3,7 @@
 <div class="input-group mb-3">
     <select
         {{ $attributes }}
-        {{ $attributes->whereStartsWith('wire:model.')->first() ? "" : "wire:model=$key" }}
+        {{-- {{ $attributes->whereStartsWith('wire:model.')->first() ? "" : "wire:model=$key" }} --}}
         name="{{ $key }}"
         class="form-control @errorClass($key)"
         value="{{ old($key) }}"

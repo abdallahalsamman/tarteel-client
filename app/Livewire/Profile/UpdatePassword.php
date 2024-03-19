@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Profile;
+namespace App\Livewire\Profile;
 
-use App\Http\Livewire\CanFlash;
+use App\Livewire\CanFlash;
 use App\Mail\PasswordChangedMail;
 use App\Rules\PasswordCheckRule;
 use App\Rules\PasswordRule;
@@ -63,7 +63,7 @@ class UpdatePassword extends Component
         Mail::to($this->user->email)
             ->send(new PasswordChangedMail());
 
-        $this->dispatchBrowserEvent('close');
+        $this->dispatch('close');
 
         $this->dispatchFlashSuccessEvent('You password has been successfully updated.');
 

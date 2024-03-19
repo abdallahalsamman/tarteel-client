@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Http\Livewire\DeleteRoleComponent;
+use App\Livewire\DeleteRoleComponent;
 use App\Http\Livewire\HasLivewireAuth;
 use App\Models\Role;
 use Database\Factories\RoleFactory;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\DeleteRoleComponent */
+/** @see \App\Livewire\DeleteRoleComponent */
 class DeleteRoleComponentTest extends TestCase
 {
     use RefreshDatabase;
@@ -51,7 +51,7 @@ class DeleteRoleComponentTest extends TestCase
         Livewire::actingAs($this->admin)
             ->test(DeleteRoleComponent::class, ['role' => $role])
             ->call('destroy')
-            ->assertEmitted('entity-deleted')
+            ->assertDispatched('entity-deleted')
             ->assertDispatchedBrowserEvent('flash');
 
         $this->assertNull(Role::find($role->id));

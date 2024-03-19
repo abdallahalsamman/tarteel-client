@@ -1,27 +1,37 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Role;
 use App\Models\User;
-use Livewire\Component;
-use App\Mail\InvitationMail;
-use Illuminate\Support\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use App\Providers\AppServiceProvider;
+use Livewire\Component;
 
-class CreateUserComponent extends Component
+class EditUserComponent extends Component
 {
+    
+
     /** @var \App\Models\User */
-    public $user;
+    public User $user;
 
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $roles;
 
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $parents;
+
+    /**
+     * Component mount.
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        if ($this->user->isHimself(auth()->user())) {
+            throw new AuthorizationException();
+        }
+    }
 
     /**
      * Render the component view.
@@ -31,43 +41,33 @@ class CreateUserComponent extends Component
     public function render()
     {
         $this->roles = Role::orderBy('name')->get();
-
+        
         $this->parents = User::whereHas('role', function ($query) {
             $query->where('name', Role::PARENT);
         })->orderBy('name')->get();
 
-        return view('users.create')
+        return view('users.edit')
             ->extends('layouts.app');
     }
 
     /**
-     * Store new user.
+     * Update existing user.
      *
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function update()
     {
         $studentRoleId = \App\Models\Role::where('name', \App\Models\Role::STUDENT)->first()->id;
 
-        if ($this->user['role_id'] != $studentRoleId) {
-            $this->user['parent_id'] = null; // Reset parent_id
+        if ($this->user->role_id != $studentRoleId) {
+            $this->user->parent_id = null; // Reset parent_id
         }
 
-        $this->validate();
+        $this->validate($this->rules());
 
-        User::create([
-            'name' => $this->user['name'],
-            'phone_number' => $this->user['phone_number'],
-            'email' => $this->user['email'],
-            'role_id' => $this->user['role_id'],
-            'parent_id' => $this->user['parent_id'],
-            'password' => Hash::make('password'), // Added default password
-            AppServiceProvider::OWNER_FIELD => auth()->id(),
-        ]);
-        msg_success('User has been successfully created.');
+        $this->user->save();
 
-        // Mail::to($user)
-        //     ->queue(new InvitationMail($user, Carbon::tomorrow()));
+        msg_success('User has been successfully updated.');
 
         return redirect()->route('users.index');
     }
@@ -90,11 +90,11 @@ class CreateUserComponent extends Component
             'user.email' => [
                 'required',
                 'email',
-                Rule::unique('users', 'email'),
+                Rule::unique('users', 'email')->ignore($this->user->id),
             ],
             'user.role_id' => [
                 'required',
-                Rule::exists('roles', 'id'),
+                'exists:roles,id',
             ],
             'user.parent_id' => [
                 Rule::requiredIf(function () {

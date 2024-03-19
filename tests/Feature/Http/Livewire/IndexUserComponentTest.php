@@ -3,8 +3,8 @@
 namespace Tests\Feature\Http\Livewire;
 
 use App\Http\Livewire\HasLivewireAuth;
-use App\Http\Livewire\HasTable;
-use App\Http\Livewire\IndexUserComponent;
+use App\Livewire\HasTable;
+use App\Livewire\IndexUserComponent;
 use App\Providers\AppServiceProvider;
 use Database\Factories\PermissionFactory;
 use Database\Factories\RoleFactory;
@@ -14,7 +14,7 @@ use Illuminate\Http\Response;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\IndexUserComponent */
+/** @see \App\Livewire\IndexUserComponent */
 class IndexUserComponentTest extends TestCase
 {
     use RefreshDatabase;

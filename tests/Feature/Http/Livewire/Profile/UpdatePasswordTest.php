@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Livewire\Profile;
 
-use App\Http\Livewire\Profile\UpdatePassword;
+use App\Livewire\Profile\UpdatePassword;
 use App\Mail\PasswordChangedMail;
 use Database\Factories\UserFactory;
 use Illuminate\Auth\AuthenticationException;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-/** @see \App\Http\Livewire\Profile\UpdatePassword */
+/** @see \App\Livewire\Profile\UpdatePassword */
 class UpdatePasswordTest extends TestCase
 {
     use RefreshDatabase;
