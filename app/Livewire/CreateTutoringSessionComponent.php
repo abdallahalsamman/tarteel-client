@@ -9,7 +9,7 @@ use App\Models\TutoringSession;
 class CreateTutoringSessionComponent extends Component
 {
     /** @var \App\Models\TutoringSession */
-    public $tutoringSession;
+    public $tutoringSession = ["duration" => 60];
     public $tutors, $parents, $children, $duration;
     public $durations = [
         ['id' => 30, 'title' => '30 minutes'],
@@ -39,7 +39,6 @@ class CreateTutoringSessionComponent extends Component
             $query->where('name', 'parent');
         })->get();
         
-        $this->tutoringSession = new TutoringSession();
         $this->durations = collect($this->durations)->map(function ($duration) {
             return (object) $duration;
         })->toArray();
