@@ -100,7 +100,6 @@
     </div>
 
     @livewireScriptConfig
-    @livewireScripts
 
     {{-- @yield('scripts') --}}
 

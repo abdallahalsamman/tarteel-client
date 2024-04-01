@@ -13,7 +13,7 @@ class EditUserComponent extends Component
     
 
     /** @var \App\Models\User */
-    public User $user;
+    public $user;
 
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $roles;
@@ -21,16 +21,25 @@ class EditUserComponent extends Component
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $parents;
 
+    
     /**
      * Component mount.
      *
      * @return void
      */
-    public function mount()
+    public function mount(User $user)
     {
-        if ($this->user->isHimself(auth()->user())) {
-            throw new AuthorizationException();
-        }
+        $this->user = $user->toArray();
+
+        // if ($this->user->isHimself(auth()->user())) {
+        //     throw new AuthorizationException();
+        // }
+
+        $this->roles = Role::orderBy('name')->get();
+        
+        $this->parents = User::whereHas('role', function ($query) {
+            $query->where('name', Role::PARENT);
+        })->orderBy('name')->get();
     }
 
     /**
@@ -40,12 +49,6 @@ class EditUserComponent extends Component
      */
     public function render()
     {
-        $this->roles = Role::orderBy('name')->get();
-        
-        $this->parents = User::whereHas('role', function ($query) {
-            $query->where('name', Role::PARENT);
-        })->orderBy('name')->get();
-
         return view('users.edit')
             ->extends('layouts.app');
     }
@@ -70,41 +73,5 @@ class EditUserComponent extends Component
         msg_success('User has been successfully updated.');
 
         return redirect()->route('users.index');
-    }
-
-    /**
-     * Validation rules.
-     *
-     * @return array
-     */
-    protected function rules()
-    {
-        return [
-            'user.name' => [
-                'required',
-            ],
-            'user.phone_number' => [
-                'required',
-                'numeric'
-            ],
-            'user.email' => [
-                'required',
-                'email',
-                Rule::unique('users', 'email')->ignore($this->user->id),
-            ],
-            'user.role_id' => [
-                'required',
-                'exists:roles,id',
-            ],
-            'user.parent_id' => [
-                Rule::requiredIf(function () {
-                    return $this->user['role_id'] == Role::where('name', Role::STUDENT)->first()->id;
-                }),
-                'nullable',
-                Rule::exists('users', 'id')->where(function ($query) {
-                    $query->where('role_id', Role::where('name', Role::PARENT)->first()->id);
-                }),
-            ],
-        ];
     }
 }

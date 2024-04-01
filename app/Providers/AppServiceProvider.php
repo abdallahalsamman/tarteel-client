@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Blade::directive('errorClass', function ($field) {
-            $ifStatement = "if(session()->has('errors') && session('errors')->has(${field}))";
+            $ifStatement = "if(session()->has('errors') && session('errors')->has({$field}))";
 
             return "<?php {$ifStatement} echo 'is-invalid'; ?>";
         });

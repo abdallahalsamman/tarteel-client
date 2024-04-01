@@ -46,7 +46,7 @@ class CreateTutoringSessionComponent extends Component
 
     public function updatedTutoringSessionParentId($value)
     {
-        $this->children = User::find($value)->children();
+        $this->children = User::find($value)->children()->get()->toArray();
     }
 
     /**

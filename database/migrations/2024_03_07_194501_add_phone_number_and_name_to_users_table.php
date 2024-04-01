@@ -14,8 +14,6 @@ class AddPhoneNumberAndNameToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->nullable()->after('id'); // Assuming you want to add it right after the 'id' column.
-            $table->string('phone_number')->nullable()->after('email'); // Making it nullable as an example.
         });
     }
 }

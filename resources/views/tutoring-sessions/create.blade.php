@@ -19,14 +19,14 @@
         <form method="POST" wire:submit="store">
             @csrf
 
-            <x-inputs.dropdown label="الأستاذ" textField="name" :options="$tutors" wire:model="tutoringSession.tutor_id" />
+            <x-inputs.dropdown label="الأستاذ" textField="name" :options="$tutors" key="tutoringSession.tutor_id" wire:model="tutoringSession.tutor_id" />
             <x-inputs.dropdown label="العائلات" textField="name" :options="$parents" key="tutoringSession.parent_id" wire:model.live="tutoringSession.parent_id" />
 
             <div wire:loading wire:target="tutoringSession.parent_id">
                 Loading...
             </div>
             
-            @if($tutoringSession->parent_id)
+            @if(isset($tutoringSession['parent_id']))
             <x-inputs.dropdown label="التلاميذ" textField="name" :options="$children" key="tutoringSession.student_id" />
             @endif
 
