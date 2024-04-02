@@ -44,7 +44,7 @@ class TutoringSession extends Model
      *
      * @var array
      */
-    protected $fillable = ['subject', 'session_date', 'duration', 'paid', 'student_id', 'tutor_id'];
+    protected $fillable = ['subject', 'note', 'session_date', 'duration', 'paid', 'student_id', 'tutor_id'];
 
     /**
      * Create a new Eloquent query builder for the model.

@@ -2,31 +2,39 @@
     الحصص
 @endsection
 
-@section('content-header')
-<x-content-header>
-    الحصص
-</x-content-header>
-@endsection
-
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                @if(auth()->user()->isAdmin() || auth()->user()->isTutor())
-                    <a href="{{ route('tutoring-sessions.create') }}" class="float-right">Add New</a>
-                @endif
-            </div>
-
             <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <span class="fas fa-lg fa-globe"></span>
+                    <span class="h3">Tarteel, Inc</span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <div>
+                        From<br>
+                        <b>Tarteel Center, Inc</b><br>
+                        Giza, Cairo<br>
+                        Egypt<br>
+                        Phone: (20) 0111691222
+                    </div>
+                    <div>
+                        To<br>
+                        <b>{{ auth()->user()->name }}</b><br>
+                        Price per Hour: {{ auth()->user()->hourly_rate }}
+                    </div>
+                    <div>
+                        Date: {{ date('M, Y') }}<br>
+                        Invoice: <b>#{{ Str::uuid() }}</b>
+                    </div>
+                </div>
+
                 <div class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
-                        <x-tables.per-page />
-
                         <!-- div for extra filters -->
                         <div class="col-md-3 col-sm-12 form-group"></div>
                         <!-- end div for extra filters -->
-
-                        <x-tables.search />
                     </div>
 
                     <x-tables.table>
@@ -59,6 +67,10 @@
                                     <a href="#" wire:click.prevent="sortBy('label')">اسم المادة</a>
                                     <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
                                 </th>
+                                <th class="sorting" dir="rtl">
+                                    <a href="#" wire:click.prevent="sortBy('label')">ملاحظات</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                </th>
 {{-- 
                                 @if(auth()->user()->isAdmin())
                                 <th class="sorting" dir="rtl">
@@ -82,6 +94,7 @@
                                     <td>{{ $tutoringSession->session_date }}</td>
                                     <td dir="rtl">{{ $tutoringSession->duration }} دقيقة</td>
                                     <td>{{ $tutoringSession->subject }}</td>
+                                    <td>{{ $tutoringSession->note }}</td>
                                     {{-- @if(auth()->user()->isAdmin())
                                     <td>
                                             <a href="{{ route('tutoring-sessions.edit', $tutoringSession) }}"><span class="fas fa-edit"></a></span>
@@ -104,6 +117,19 @@
                         <x-tables.entries-data :data="$tutoringSessions" />
 
                         <x-tables.pagination :data="$tutoringSessions" />
+                    </div>
+                </div>
+
+                <div class="mt-3 d-flex justify-content-between">
+                    <div>
+                        <h5 class="font-weight-light">Payment Methods:</h5>
+                        <ul>
+                            <li>Bank Transfer</li>
+                            <li>Paypal</li>
+                        </ul>
+                    </div>
+                    <div class="col-6 ">
+                        <h4 class="font-weight-light">Amount Due: {{ date('M, Y') }}</h4>
                     </div>
                 </div>
             </div>

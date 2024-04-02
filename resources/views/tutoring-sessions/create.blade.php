@@ -37,6 +37,8 @@
             
             <x-inputs.text wire:model="subject" placeholder="المادة" />
 
+            <x-inputs.text wire:model="note" placeholder="ملاحظة" />
+
             <div class="row">
                 <div class="offset-8 col-4">
                     <x-inputs.button text="حفظ" class="btn-success" />

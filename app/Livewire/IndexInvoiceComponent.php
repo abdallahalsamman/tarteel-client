@@ -16,6 +16,13 @@ class IndexInvoiceComponent extends Component
     /** @var array */
     protected $queryString = ['perPage', 'sortField', 'sortDirection', 'search'];
 
+    public function mount()
+    {
+        $this->perPage = 999;
+        $this->sortField = 'session_date';
+        $this->sortDirection = 'desc';
+    }
+
     /**
      * Render the component view.
      *
@@ -25,18 +32,20 @@ class IndexInvoiceComponent extends Component
     {
         $user = auth()->user();
         if ($user->isAdmin()) {
-            $tutoringsessions = TutoringSession::filter([
+            $tutoringSessions = TutoringSession::filter([
                 'search' => $this->search,
                 'orderByField' => [$this->sortField, $this->sortDirection],
             ])->paginate($this->perPage);
         } else {
-            $tutoringsessions = $user->tutoringSessions()->filter([
+            $tutoringSessions = $user->tutoringSessions()->filter([
                 'search' => $this->search,
                 'orderByField' => [$this->sortField, $this->sortDirection],
             ])->paginate($this->perPage);
         }
-            
-        return view('tutoring-sessions.index', ['tutoringSessions' => $tutoringsessions])
+
+        $tutoringSessions->where('paid', null);
+
+        return view('invoices.index', ['tutoringSessions' => $tutoringSessions])
             ->extends('layouts.app');
     }
 }

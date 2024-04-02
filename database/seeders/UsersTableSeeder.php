@@ -47,6 +47,7 @@ class UsersTableSeeder extends Seeder
                 'tutor_id' => $tutor->id,
                 'session_date' => now()->addDays($i),
                 'subject' => 'Math',
+                'note' => 'This is a note.',
                 'duration' => 45,
             ]);
         }

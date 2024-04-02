@@ -16,7 +16,6 @@
 
     <x-slot name="card_body">
         <form wire:submit="update">
-            // edit-review
 
             <div class="row">
                 <div class="offset-8 col-4">
