@@ -16,22 +16,22 @@ class RolesTableSeeder extends Seeder
     {
         RoleFactory::new()->create([
             'name' => 'admin',
-            'label' => 'admin',
+            'label' => 'مدير النظام',
         ]);
 
         RoleFactory::new()->create([
             'name' => 'tutor',
-            'label' => 'tutor',
+            'label' => 'مدرس',
         ]);
 
         RoleFactory::new()->create([
             'name' => 'parent',
-            'label' => 'parent',
+            'label' => 'ولي أمر',
         ]);
 
         RoleFactory::new()->create([
             'name' => 'student',
-            'label' => 'student',
+            'label' => 'تلميذ',
         ]);
     }
 }

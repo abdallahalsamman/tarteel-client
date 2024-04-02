@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Filters\UserFilter;
-use App\Providers\AppServiceProvider;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\AppServiceProvider;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * App\Models\User
@@ -58,7 +59,9 @@ use Illuminate\Support\Facades\Storage;
  */
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, CascadeSoftDeletes;
+    
+    protected $cascadeDeletes = ['tutoringSessions', 'children'];
 
     /**
      * The attributes that aren't mass assignable.
@@ -117,6 +120,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function tutoringSessions()
+    {
+        return $this->hasMany(TutoringSession::class, 'student_id')->orWhere('tutor_id', $this->id);
+    }
+
     /**
      * Create a new Eloquent query builder for the model.
      *
@@ -126,20 +134,6 @@ class User extends Authenticatable
     public function newEloquentBuilder($query)
     {
         return new UserFilter($query);
-    }
-
-    /**
-     *  Get user's image file.
-     *
-     * @return string
-     */
-    public function getImageFileAttribute()
-    {
-        if ($this->image === null) {
-            return asset('images/default-user.png');
-        }
-
-        return Storage::disk('avatar')->url("{$this->image}");
     }
 
     /**
@@ -180,42 +174,6 @@ class User extends Authenticatable
     public function isStudent()
     {
         return $this->role->isStudent();
-    }
-
-    /**
-     * Does user have permission.
-     *
-     * @param  string  $permission
-     * @return bool
-     */
-    public function hasPermission($permission)
-    {
-        return $this->role->permissions()
-            ->where('name', $permission)
-            ->first() ? true : false;
-    }
-
-    /**
-     * Get first user's permission.
-     *
-     * @param  string  $permissionName
-     * @return bool
-     */
-    public function getPermission($permissionName)
-    {
-        return $this->role->permissions()
-            ->where('name', $permissionName)
-            ->first();
-    }
-
-    /**
-     * Save user's image name.
-     *
-     * @return string
-     */
-    public function saveImage($imageName)
-    {
-        $this->update(['image' => $imageName]);
     }
 
     /**

@@ -11,7 +11,6 @@ use App\Models\User;
  *
  * @property int $id
  * @property string $subject
- * @property string|null $note
  * @property string $session_date
  * @property int $duration
  * @property int|null $paid
@@ -30,7 +29,6 @@ use App\Models\User;
  * @method static TutoringSessionFilter|TutoringSession whereCreatedAt($value)
  * @method static TutoringSessionFilter|TutoringSession whereDuration($value)
  * @method static TutoringSessionFilter|TutoringSession whereId($value)
- * @method static TutoringSessionFilter|TutoringSession whereNote($value)
  * @method static TutoringSessionFilter|TutoringSession wherePaid($value)
  * @method static TutoringSessionFilter|TutoringSession whereSessionDate($value)
  * @method static TutoringSessionFilter|TutoringSession whereStudentId($value)
@@ -46,7 +44,7 @@ class TutoringSession extends Model
      *
      * @var array
      */
-    protected $fillable = ['subject', 'note', 'session_date', 'duration', 'paid', 'student_id', 'tutor_id'];
+    protected $fillable = ['subject', 'session_date', 'duration', 'paid', 'student_id', 'tutor_id'];
 
     /**
      * Create a new Eloquent query builder for the model.

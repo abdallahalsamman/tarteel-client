@@ -12,10 +12,11 @@ class CreateTutoringSessionComponent extends Component
     /** @var \App\Models\TutoringSession */
     public $tutors, $parents, $children;
 
-    public $duration, $note, $session_date, $subject, $parent_id, $student_id, $tutor_id;
+    public $duration, $session_date, $subject, $parent_id, $student_id, $tutor_id;
 
     public $durations = [
         ['id' => 30, 'title' => 'نصف ساعة'],
+        ['id' => 45, 'title' => '٤٥ دقيقة'],
         ['id' => 60, 'title' => 'ساعة'],
         ['id' => 90, 'title' => 'ساعة ونصف'],
         ['id' => 120, 'title' => 'ساعتين'],
@@ -75,7 +76,6 @@ class CreateTutoringSessionComponent extends Component
             'tutor_id' => $this->tutor_id,
             'student_id' => $this->student_id,
             'duration' => $this->duration,
-            'note' => $this->note,
             'session_date' => $this->session_date,
             'subject' => $this->subject
         ]);
@@ -96,8 +96,7 @@ class CreateTutoringSessionComponent extends Component
             'tutor_id' => ['required', 'exists:users,id'],
             'parent_id' => ['required', 'exists:users,id'],
             'student_id' => ['required', 'exists:users,id'],
-            'duration' => ['required', 'in:30,60,90,120,150,180'],
-            'note' => 'nullable|string|max:255',
+            'duration' => ['required', 'in:30,45,60,90,120,150,180'],
             'session_date' => 'required|date',
             'subject' => 'string|max:255',
         ];

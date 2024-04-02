@@ -5,9 +5,9 @@
 
 <body
     class="hold-transition sidebar-mini"
-    {{-- x-data="window.nav.make()" --}}
+    x-data="window.nav.make()"
     :class="{ 'sidebar-collapse' : collapsed }"
-    {{-- x-on:resize.window="resize()" --}}
+    x-on:resize.window="resize()"
     x-ref="body"
 >
 
@@ -16,8 +16,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a
-                        {{-- x-on:click="click()" --}}
-                        {{-- @click.away="clickAway()" --}}
+                        x-on:click="click()"
+                        @click.away="clickAway()"
                         class="nav-link"
                         href="#"
                     >
@@ -29,21 +29,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown user-menu" x-data="{ open: false }">
                     <a href="javascript:void(0)" class="nav-link" x-on:click="open= true">
-                        <img src="{{ auth()->user()->imageFile }}" class="user-image img-circle elevation-2" alt="User Image">
                         <span class="d-none d-md-inline">{{ auth()->user()->email }}</span>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" x-show="open" x-bind:class="{ 'show': open }" x-on:click.away="open= false" x-cloak>
-                        <li class="user-header bg-primary">
-                            <img src="{{ auth()->user()->imageFile }}" class="img-circle elevation-2">
-                            <p>
-                                {{ auth()->user()->email }}
-                            </p>
-                        </li>
-
                         <li class="user-footer">
-                            <a href="{{ route('profile.users.index') }}" class="btn btn-default btn-flat">Profile</a>
-
                             <a
                                 href="#"
                                 class="btn btn-default btn-flat float-right"
@@ -63,21 +53,18 @@
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4 x-cloak">
-            <div class="brand-link">
-                <i class="nav-icon fas fa-tachometer-alt elevation-3"></i>
-                <span class="brand-text">ترتيل</span>
-            </div>
-
             @if(auth()->user()->isAdmin())
                 <a href="{{ route('users.index') }}" class="brand-link">
-                    <i class="nav-icon fas fa-user elevation-3"></i>
                     <span class="brand-text"> الأستاذة والمستخدمين</span>
                 </a>
             @endif
 
             <a href="{{ route('tutoring-sessions.index') }}" class="brand-link">
-                <i class="nav-icon fas fa-user-tag elevation-3"></i>
                 <span class="brand-text">الحصص</span>
+            </a>
+
+            <a href="{{ auth()->user()->isAdmin() ? route('invoices.index') : route('invoices.show', ['user' => auth()->user()->id]) }}" class="brand-link">
+                <span class="brand-text">@if(auth()->user()->isAdmin()) الفواتير @else الفاتورة @endif</span>
             </a>
         </aside>
 
@@ -100,10 +87,6 @@
     </div>
 
     @livewireScriptConfig
-
-    {{-- @yield('scripts') --}}
-
-    {{-- @stack('scripts') --}}
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 
 @section('content-header')
 <x-content-header>
-    Users
+    الأساتذة والمستخدمين
 </x-content-header>
 @endsection
 
@@ -13,7 +13,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List of Users</h3>
                 <a href="{{ route('users.create') }}" class="float-right">Add New</a>
             </div>
 
@@ -28,10 +27,11 @@
                                 class="form-control form-control-sm custom-select custom-select-sm"
                                 value="roleId"
                                 placeholder="{{ trans("validation.attributes.roleId") }}"
+                                dir="rtl"
                             >
-                                <option value="">-- role --</option>
+                                <option value="">-- الصلاحية --</option>
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option value="{{ $role->id }}">{{ $role->label }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -40,45 +40,40 @@
                     </div>
 
                     <x-tables.table>
-
                         <x-slot name="thead_tfoot">
                             <tr>
-                    <th class="sorting">
-                        #
-                    </th>
-                    <th class="sorting">
-                        <a href="#" wire:click.prevent="sortBy('name')">Name</a>
-                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
-                    </th>
-                    <th class="sorting">
-                        <a href="#" wire:click.prevent="sortBy('email')">Email</a>
-                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="email" />
-                    </th>
-                    <th class="sorting">
-                        <a href="#" wire:click.prevent="sortBy('phone_number')">Phone Number</a>
-                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="phone_number" />
-                    </th>
-                    <th class="sorting">
-                        Role
-                    </th>
-                    <th class="sorting">
-                        <a href="#" wire:click.prevent="sortBy('created_at')">Created</a>
-                        <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="created_at" />
-                    </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('name')">الإسم</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('email')">إيميل</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="email" />
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('phone_number')">رقم الهاتف</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="phone_number" />
+                                </th>
+                                <th class="sorting">
+                                    الوظيفة
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('created_at')">تاريخ الإنضمام</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="created_at" />
+                                </th>
 
-                    <th class="sorting">
-                        Edit
-                    </th>
-                    <th class="sorting">
-                        Delete
-                    </th>
+                                <th class="sorting">
+                                    Edit
+                                </th>
+                                <th class="sorting">
+                                    Delete
+                                </th>
                             </tr>
                         </x-slot>
 
                         <x-slot name="tbody">
                             @forelse($users as $user)
                                 <tr class="@if($loop->odd) odd @endif" wire:key="user-row-{{ $user->id }}">
-                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone_number }}</td>
@@ -99,7 +94,6 @@
                                 </tr>
                             @endforelse
                         </x-slot>
-
                     </x-tables.table>
 
                     <div class="row">

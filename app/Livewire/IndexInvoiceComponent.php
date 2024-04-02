@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\TutoringSession;
 use Livewire\Component;
 
-class IndexTutoringSessionComponent extends Component
+class IndexInvoiceComponent extends Component
 {
     use HasTable;
 
@@ -15,9 +15,6 @@ class IndexTutoringSessionComponent extends Component
     // index-review
     /** @var array */
     protected $queryString = ['perPage', 'sortField', 'sortDirection', 'search'];
-
-    /** @var array */
-    protected $listeners = ['entity-deleted' => 'render'];
 
     /**
      * Render the component view.
