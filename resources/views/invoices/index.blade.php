@@ -21,8 +21,8 @@
                     </div>
                     <div>
                         To<br>
-                        <b>{{ auth()->user()->name }}</b><br>
-                        Price per Hour: {{ auth()->user()->hourly_rate }}
+                        <b>{{ $tutoringSessions[0]->tutor->name }}</b><br>
+                        Price per Hour: {{ $tutoringSessions[0]->tutor->hourly_rate }}
                     </div>
                     <div>
                         Date: {{ date('M, Y') }}<br>
@@ -130,6 +130,18 @@
                     </div>
                     <div class="col-6 ">
                         <h4 class="font-weight-light">Amount Due: {{ date('M, Y') }}</h4>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                  <th><b>Total Hours:</b></th>
+                                  <td>{{ $tutoringSessions->sum('duration') / 60 }}</td>
+                                </tr>
+                                <tr>
+                                  <th><b>Cash:</b></th>
+                                  <td>LE {{ ($tutoringSessions->sum('duration') / 60) * $tutoringSessions[0]->tutor->hourly_rate }}</td>
+                                </tr>
+                            </tbody>
+                        </table>                          
                     </div>
                 </div>
             </div>

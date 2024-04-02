@@ -18,6 +18,7 @@ class UserForm extends Form
     public $phone_number;
     public $email;
     public $role_id;
+    public $hourly_rate;
     public $parent_id;
     public $password;
 
@@ -29,14 +30,17 @@ class UserForm extends Form
         $this->email = $user->email;
         $this->role_id = $user->role_id;
         $this->parent_id = $user->parent_id;
+        $this->hourly_rate = $user->hourly_rate;
     }
 
     public function store()
     {
-        $studentRoleId = \App\Models\Role::where('name', \App\Models\Role::STUDENT)->first()->id;
-
-        if ($this->role_id != $studentRoleId) {
+        if ($this->role_id != Role::firstWhere('name', Role::STUDENT)->id) {
             $this->parent_id = null;
+        }
+
+        if ($this->role_id != Role::firstWhere('name', Role::TUTOR)->id) {
+            $this->hourly_rate = null;
         }
 
         $this->validate();
@@ -47,6 +51,7 @@ class UserForm extends Form
             'email' => $this->email,
             'role_id' => $this->role_id,
             'parent_id' => $this->parent_id,
+            'hourly_rate' => $this->hourly_rate,
             'password' => Hash::make($this->password), // Added default password
         ]);
     }
@@ -55,10 +60,12 @@ class UserForm extends Form
     {        
         $this->validate();
 
-        $studentRoleId = Role::where('name', Role::STUDENT)->first()->id;
-
-        if ($this->user->role_id != $studentRoleId) {
+        if ($this->user->role_id != Role::firstWhere('name', Role::STUDENT)->id) {
             $this->user->parent_id = null;
+        }
+
+        if ($this->user->role_id != Role::firstWhere('name', Role::TUTOR)->id) {
+            $this->user->hourly_rate = null;
         }
 
         $this->user->update(
@@ -83,6 +90,11 @@ class UserForm extends Form
             'phone_number' => [
                 'required',
                 'numeric'
+            ],
+            'hourly_rate' => [
+                'nullable',
+                'numeric',
+                'min:1'
             ],
             'email' => [
                 'required',

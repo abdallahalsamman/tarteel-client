@@ -4,13 +4,12 @@
 
 @section('content-header')
 <x-content-header>
-    تعديل المستخدم
+    إضافة مستخدم
 </x-content-header>
 @endsection
 
 <x-savings.content>
     <x-slot name="card_header">
-        <h3 class="card-title">تعديل المستخدم</h3>
         <a href="{{ route('users.index') }}" class="float-right">عودة</a>
     </x-slot>
 
@@ -47,8 +46,8 @@
             <x-inputs.dropdown
                 wire:model.live="form.role_id"
                 :options="$roles"
-                textField="name"
-                label="Select Role"
+                textField="label"
+                label="إختر الوظيفة"
                 required="required"
             />
 
@@ -61,8 +60,18 @@
                 wire:model="form.parent_id"
                 :options="$parents"
                 textField="name"
-                label="Select Parent"
+                label="إختر العائلة"
                 required
+            />
+            @endif
+
+            @if ($form->role_id == $roles->firstWhere('name', \App\Models\Role::TUTOR)->id)
+            <x-inputs.text
+                wire:model="form.hourly_rate"
+                placeholder="{{ trans('validation.attributes.hourly_rate') }}"
+                type="number"
+                autofocus
+                required="required"
             />
             @endif
             

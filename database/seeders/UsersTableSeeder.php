@@ -32,6 +32,7 @@ class UsersTableSeeder extends Seeder
             $tutor = UserFactory::new()->create([
                 'email' => 'tutor' . $i . '@lte.com',
                 'name' => 'Tutor User ' . $i,
+                'hourly_rate' => 50,
                 'role_id' => Role::whereName('tutor')->first()->id,
             ]);
 
