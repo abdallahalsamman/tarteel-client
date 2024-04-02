@@ -12,13 +12,11 @@
 <x-savings.content>
     <x-slot name="card_header">
         <h3 class="card-title">تسجيل حصة</h3>
-        <a href="{{ route('tutoring-sessions.index') }}" class="float-right">Back</a>
+        <a href="{{ route('tutoring-sessions.index') }}" class="float-right">عودة</a>
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit="store">
-            @csrf
-
+        <form wire:submit="store">
             <x-inputs.dropdown label="الأستاذ" textField="name" :options="$tutors" wire:model="tutoringSession.tutor_id" />
             <x-inputs.dropdown label="العائلات" textField="name" :options="$parents" wire:model.live="tutoringSession.parent_id" />
 

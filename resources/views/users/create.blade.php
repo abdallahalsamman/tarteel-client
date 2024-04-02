@@ -1,49 +1,71 @@
-<div>
 @section('title')
-    إنشاء مستخدم جديد
+    تعديل المستخدم
 @endsection
 
 @section('content-header')
 <x-content-header>
-    إنشاء مستخدم جديد
+    تعديل المستخدم
 </x-content-header>
 @endsection
 
 <x-savings.content>
     <x-slot name="card_header">
-        <h3 class="card-title">إنشاء مستخدم جديد</h3>
-        <a href="{{ route('users.index') }}" class="float-right">Back</a>
+        <h3 class="card-title">تعديل المستخدم</h3>
+        <a href="{{ route('users.index') }}" class="float-right">عودة</a>
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit="store">
-            @csrf
-
+        <form wire:submit="store">
             <x-inputs.text
-                wire:model="user.name"
+                wire:model="form.name"
                 placeholder="{{ trans('validation.attributes.name') }}"
                 autofocus
                 required="required"
             />
 
             <x-inputs.text
-                wire:model="user.phone_number"
+                wire:model="form.phone_number"
                 placeholder="{{ trans('validation.attributes.phone_number') }}"
                 autofocus
                 required="required"
             />
 
-            <x-inputs.email wire:model="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
-
-            <x-inputs.dropdown wire:model.live="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
-
-            <x-inputs.dropdown
-                wire:model="user.parent_id"
-                :options="$parents"
-                textField="name"
-                label="العائلة"
+            <x-inputs.email
+                wire:model="form.email"
+                placeholder="{{ trans('validation.attributes.email') }}"
+                autofocus
+                required="required"
             />
 
+            <x-inputs.text
+                wire:model="form.password"
+                placeholder="{{ trans('validation.attributes.password') }}"
+                autofocus
+                required="required"
+            />
+
+            <x-inputs.dropdown
+                wire:model.live="form.role_id"
+                :options="$roles"
+                textField="name"
+                label="Select Role"
+                required="required"
+            />
+
+            <div wire:loading wire:target="form.role_id">
+                Loading...
+            </div>
+
+            @if ($form->role_id == $roles->firstWhere('name', \App\Models\Role::STUDENT)->id)
+            <x-inputs.dropdown
+                wire:model="form.parent_id"
+                :options="$parents"
+                textField="name"
+                label="Select Parent"
+                required
+            />
+            @endif
+            
             <div class="row">
                 <div class="offset-8 col-4">
                     <x-inputs.button text="Save" class="btn-success" />

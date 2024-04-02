@@ -4,8 +4,10 @@ namespace App\Livewire\Forms;
 
 use Livewire\Form;
 use App\Models\Role;
-use Livewire\Attributes\Validate;
+use App\Models\User;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserForm extends Form
@@ -17,6 +19,7 @@ class UserForm extends Form
     public $email;
     public $role_id;
     public $parent_id;
+    public $password;
 
     public function setUser($user)
     {
@@ -30,9 +33,22 @@ class UserForm extends Form
 
     public function store()
     {
+        $studentRoleId = \App\Models\Role::where('name', \App\Models\Role::STUDENT)->first()->id;
+
+        if ($this->role_id != $studentRoleId) {
+            $this->parent_id = null;
+        }
+
         $this->validate();
 
-        // Store the user...
+        User::create([
+            'name' => $this->name,
+            'phone_number' => $this->phone_number,
+            'email' => $this->email,
+            'role_id' => $this->role_id,
+            'parent_id' => $this->parent_id,
+            'password' => Hash::make($this->password), // Added default password
+        ]);
     }
 
     public function update()
@@ -46,7 +62,7 @@ class UserForm extends Form
         }
 
         $this->user->update(
-            $this->except('user')
+            $this->except('user', 'password')
         );
 
         $this->user->save();
@@ -71,7 +87,7 @@ class UserForm extends Form
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users', 'email')->ignore($this->user->id),
+                Rule::unique('users', 'email')->ignore($this->user?->id),
             ],
             'role_id' => [
                 'required',
@@ -79,13 +95,13 @@ class UserForm extends Form
             ],
             'parent_id' => [
                 Rule::requiredIf(function () {
-                    return $this->user['role_id'] == Role::where('name', Role::STUDENT)->first()->id;
+                    return $this->role_id == Role::where('name', Role::STUDENT)->first()->id;
                 }),
                 'nullable',
                 Rule::exists('users', 'id')->where(function ($query) {
                     $query->where('role_id', Role::where('name', Role::PARENT)->first()->id);
                 }),
-            ],
+            ]
         ];
     }
 }

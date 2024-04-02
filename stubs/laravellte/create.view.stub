@@ -12,13 +12,11 @@
 <x-savings.content>
     <x-slot name="card_header">
         <h3 class="card-title">Create New {{ DummyText }}</h3>
-        <a href="{{ route('{{ dummyTextPlu }}.index') }}" class="float-right">Back</a>
+        <a href="{{ route('{{ dummyTextPlu }}.index') }}" class="float-right">عودة</a>
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit.prevent="store">
-            @csrf
-
+        <form wire:submit.prevent="store">
             // create-review
 
             <div class="row">

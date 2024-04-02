@@ -11,13 +11,11 @@
 <x-savings.content>
     <x-slot name="card_header">
         <h3 class="card-title">Edit Existing TutoringSession</h3>
-        <a href="{{ route('tutoring-sessions.index') }}" class="float-right">Back</a>
+        <a href="{{ route('tutoring-sessions.index') }}" class="float-right">عودة</a>
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit="update">
-            @csrf
-
+        <form wire:submit="update">
             // edit-review
 
             <div class="row">

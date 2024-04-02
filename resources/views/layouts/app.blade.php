@@ -95,7 +95,7 @@
         </div>
 
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ date('Y') }} <a href="https://jcergolj.me.uk">jcergolj</a>.</strong>
+            <strong>Copyright &copy; {{ date('Y') }} <a href="https://tarteelcenter.com">TarteelCenter</a>.</strong>
         </footer>
     </div>
 

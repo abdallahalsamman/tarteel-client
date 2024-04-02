@@ -1,17 +1,17 @@
 @section('title')
-    Edit Existing User
+    تعديل المستخدم
 @endsection
 
 @section('content-header')
 <x-content-header>
-    Edit Existing User
+    تعديل المستخدم
 </x-content-header>
 @endsection
 
 <x-savings.content>
     <x-slot name="card_header">
-        <h3 class="card-title">Edit Existing User</h3>
-        <a href="{{ route('users.index') }}" class="float-right">Back</a>
+        <h3 class="card-title">تعديل المستخدم</h3>
+        <a href="{{ route('users.index') }}" class="float-right">عودة</a>
     </x-slot>
 
     <x-slot name="card_body">
