@@ -12,7 +12,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List of TutoringSessions</h3>
                 @if(auth()->user()->isAdmin() || auth()->user()->isTutor())
                     <a href="{{ route('tutoring-sessions.create') }}" class="float-right">Add New</a>
                 @endif
@@ -35,19 +34,28 @@
                         <x-slot name="thead_tfoot">
                             <tr>
                                 <th class="sorting">
-                                    #
-                                </th>
-                                <th class="sorting">
-                                    <a href="#" wire:click.prevent="sortBy('name')">Name</a>
+                                    <a href="#" wire:click.prevent="sortBy('name')">العائلة</a>
                                     <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
                                 </th>
                                 <th class="sorting">
-                                    <a href="#" wire:click.prevent="sortBy('label')">Label</a>
+                                    <a href="#" wire:click.prevent="sortBy('name')">الطالب</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('label')">موعد الحصة</a>
                                     <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
                                 </th>
                                 <th class="sorting">
-                                    <a href="#" wire:click.prevent="sortBy('created_at')">Created</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="created_at" />
+                                    <a href="#" wire:click.prevent="sortBy('label')">المدة</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('label')">اسم المادة</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                </th>
+                                <th class="sorting">
+                                    <a href="#" wire:click.prevent="sortBy('label')">ملحوظة</a>
+                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
                                 </th>
 
                                 @if(auth()->user()->isAdmin())
@@ -62,16 +70,20 @@
                         </x-slot>
 
                         <x-slot name="tbody">
-                            @forelse($tutoringSessions as $tutoringsession)
+                            @forelse($tutoringSessions as $tutoringSession)
                                 <tr class="@if($loop->odd) odd @endif">
-                                    <td>{{ $loop->iteration }}</td>
-                                    // index-review
+                                    <td>{{ $tutoringSession->student->parent->name }}</td>
+                                    <td>{{ $tutoringSession->student->name }}</td>
+                                    <td>{{ $tutoringSession->session_date }}</td>
+                                    <td>{{ $tutoringSession->duration }}</td>
+                                    <td>{{ $tutoringSession->subject }}</td>
+                                    <td>{{ $tutoringSession->note }}</td>
                                     @if(auth()->user()->isAdmin())
                                     <td>
-                                            <a href="{{ route('tutoring-sessions.edit', $tutoringsession) }}"><span class="fas fa-edit"></a></span>
+                                            <a href="{{ route('tutoring-sessions.edit', $tutoringSession) }}"><span class="fas fa-edit"></a></span>
                                     </td>
                                     <td>
-                                        <livewire:delete-tutoringsession-component :tutoringsession="$tutoringsession" :key="'tutoring-sessions-'.$tutoringsession->id" />
+                                        <livewire:delete-tutoring-session-component :tutoringSession="$tutoringSession" :key="'tutoring-sessions-'.$tutoringSession->id" />
                                     </td>
                                     @endif
                                 </tr>

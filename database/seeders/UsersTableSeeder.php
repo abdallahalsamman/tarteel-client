@@ -21,11 +21,13 @@ class UsersTableSeeder extends Seeder
             'role_id' => Role::whereName('admin')->first()->id,
         ]);
 
-        UserFactory::new()->create([
-            'email' => 'tutor@lte.com',
-            'name' => 'Tutor User',
-            'role_id' => Role::whereName('tutor')->first()->id,
-        ]);
+        for ($i = 0; $i < 5; $i++) {
+            UserFactory::new()->create([
+                'email' => 'tutor' . $i . '@lte.com',
+                'name' => 'Tutor User ' . $i,
+                'role_id' => Role::whereName('tutor')->first()->id,
+            ]);
+        }
 
         $parent = UserFactory::new()->create([
             'email' => 'parent@lte.com',

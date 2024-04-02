@@ -46,7 +46,7 @@
             />
 
             <div wire:loading wire:target="form.role_id">
-                Loading...
+                الرجاء الإنتظار...
             </div>
 
             @if ($form->role_id == $roles->firstWhere('name', \App\Models\Role::STUDENT)->id)
@@ -60,7 +60,7 @@
             
             <div class="row">
                 <div class="offset-8 col-4">
-                    <x-inputs.button text="Save" class="btn-success" />
+                    <x-inputs.button text="حفظ" class="btn-success" />
                 </div>
             </div>
         </form>

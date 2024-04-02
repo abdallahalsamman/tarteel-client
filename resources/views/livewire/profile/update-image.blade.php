@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="offset-4 col-4">
-            <x-inputs.button text="Save" class="btn-success" />
+            <x-inputs.button text="حفظ" class="btn-success" />
         </div>
 
         <div class="col-4">

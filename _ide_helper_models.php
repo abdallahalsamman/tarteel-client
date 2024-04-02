@@ -166,3 +166,14 @@ namespace App\Models{
 	class User extends \Eloquent {}
 }
 
+namespace Illuminate\Contracts\Auth {
+    interface Guard
+    {
+        /**
+         * Get the currently authenticated user.
+         *
+         * @return \App\User|null
+         */
+        public function user();
+    }
+}
