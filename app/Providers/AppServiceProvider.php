@@ -8,11 +8,6 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Name of the field that specifies the owner. It should be the same for all models.
-     */
-    public const OWNER_FIELD = 'owner_id';
-
     public const MIN_PASSWORD_LENGTH = 8;
 
     /**

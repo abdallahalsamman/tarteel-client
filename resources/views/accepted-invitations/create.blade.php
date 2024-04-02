@@ -9,9 +9,9 @@
         <form method="POST" wire:submit="submit">
             @csrf
 
-            <x-inputs.password key="newPassword" />
+            <x-inputs.password wire:model="newPassword" />
 
-            <x-inputs.password key="newPasswordConfirmation" />
+            <x-inputs.password wire:model="newPasswordConfirmation" />
 
             <div class="row">
                 <div class="offset-4 col-4">

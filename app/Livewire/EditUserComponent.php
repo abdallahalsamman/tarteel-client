@@ -4,16 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
+use App\Livewire\Forms\UserForm;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class EditUserComponent extends Component
 {
-    
-
-    /** @var \App\Models\User */
-    public $user;
+    public UserForm $form;
 
     /** @var \Illuminate\Database\Eloquent\Collection */
     public $roles;
@@ -29,7 +26,7 @@ class EditUserComponent extends Component
      */
     public function mount(User $user)
     {
-        $this->user = $user->toArray();
+        $this->form->setUser($user);
 
         // if ($this->user->isHimself(auth()->user())) {
         //     throw new AuthorizationException();
@@ -42,6 +39,15 @@ class EditUserComponent extends Component
         })->orderBy('name')->get();
     }
 
+    public function update()
+    {
+        $this->form->update();
+
+        msg_success('User has been successfully updated.');
+
+        return redirect()->route('users.index');
+    }
+
     /**
      * Render the component view.
      *
@@ -51,27 +57,5 @@ class EditUserComponent extends Component
     {
         return view('users.edit')
             ->extends('layouts.app');
-    }
-
-    /**
-     * Update existing user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update()
-    {
-        $studentRoleId = \App\Models\Role::where('name', \App\Models\Role::STUDENT)->first()->id;
-
-        if ($this->user->role_id != $studentRoleId) {
-            $this->user->parent_id = null; // Reset parent_id
-        }
-
-        $this->validate($this->rules());
-
-        $this->user->save();
-
-        msg_success('User has been successfully updated.');
-
-        return redirect()->route('users.index');
     }
 }

@@ -18,8 +18,8 @@
         <form wire:submit="store" method="POST" x-data="window.permissions()">
             @csrf
 
-            <x-inputs.text key="role.name" autofocus placeholder="{{ trans('validation.attributes.role') }}"/>
-            <x-inputs.text key="role.label" required="required"
+            <x-inputs.text wire:model="role.name" autofocus placeholder="{{ trans('validation.attributes.role') }}"/>
+            <x-inputs.text wire:model="role.label" required="required"
                            placeholder="{{ trans('validation.attributes.label') }}"/>
 
             <h3>Assign Permissions</h3>

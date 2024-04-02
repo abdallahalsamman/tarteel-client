@@ -1,9 +1,11 @@
-@props(['options', 'key', 'textField', 'label'])
+@props(['options', 'textField', 'label'])
+@php
+    $key = $attributes['key'] ?? $attributes->thatStartWith('wire:model')->first();
+@endphp
 
 <div class="input-group mb-3">
     <select
         {{ $attributes }}
-        {{-- {{ $attributes->whereStartsWith('wire:model.')->first() ? "" : "wire:model=$key" }} --}}
         name="{{ $key }}"
         class="form-control @errorClass($key)"
         value="{{ old($key) }}"

@@ -20,25 +20,25 @@
             @csrf
 
             <x-inputs.text
-                key="user.name"
+                wire:model="user.name"
                 placeholder="{{ trans('validation.attributes.name') }}"
                 autofocus
                 required="required"
             />
 
             <x-inputs.text
-                key="user.phone_number"
+                wire:model="user.phone_number"
                 placeholder="{{ trans('validation.attributes.phone_number') }}"
                 autofocus
                 required="required"
             />
 
-            <x-inputs.email key="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
+            <x-inputs.email wire:model="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
 
-            <x-inputs.dropdown key="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
+            <x-inputs.dropdown wire:model="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
 
             <x-inputs.dropdown
-                key="user.parent_id"
+                wire:model="user.parent_id"
                 :options="$parents"
                 textField="name"
                 label="العائلة"

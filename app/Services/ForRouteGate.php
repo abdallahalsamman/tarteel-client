@@ -48,12 +48,6 @@ class ForRouteGate
             throw new MissingModel();
         }
 
-        $ownerField = AppServiceProvider::OWNER_FIELD;
-
-        if ($model->$ownerField === null) {
-            return $user->hasPermission($permissionName);
-        }
-
         return $user->isModelOwner($permissionName, $model);
     }
 }

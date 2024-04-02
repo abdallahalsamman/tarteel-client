@@ -62,7 +62,6 @@ class CreateUserComponent extends Component
             'role_id' => $this->user['role_id'],
             'parent_id' => $this->user['parent_id'],
             'password' => Hash::make('password'), // Added default password
-            AppServiceProvider::OWNER_FIELD => auth()->id(),
         ]);
         msg_success('User has been successfully created.');
 

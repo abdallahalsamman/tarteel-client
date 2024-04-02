@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Attributes\Validate;
 use Livewire\Form;
+use App\Models\Role;
+use Livewire\Attributes\Validate;
+use Illuminate\Validation\Rule;
 
-class User extends Form
+
+class UserForm extends Form
 {
     public $user;
 
@@ -33,10 +36,20 @@ class User extends Form
     }
 
     public function update()
-    {
+    {        
         $this->validate();
 
-        // Update the user...
+        $studentRoleId = Role::where('name', Role::STUDENT)->first()->id;
+
+        if ($this->user->role_id != $studentRoleId) {
+            $this->user->parent_id = null;
+        }
+
+        $this->user->update(
+            $this->except('user')
+        );
+
+        $this->user->save();
     }
 
 
@@ -48,23 +61,23 @@ class User extends Form
     protected function rules()
     {
         return [
-            'user.name' => [
+            'name' => [
                 'required',
             ],
-            'user.phone_number' => [
+            'phone_number' => [
                 'required',
                 'numeric'
             ],
-            'user.email' => [
+            'email' => [
                 'required',
                 'email',
                 Rule::unique('users', 'email')->ignore($this->user->id),
             ],
-            'user.role_id' => [
+            'role_id' => [
                 'required',
                 'exists:roles,id',
             ],
-            'user.parent_id' => [
+            'parent_id' => [
                 Rule::requiredIf(function () {
                     return $this->user['role_id'] == Role::where('name', Role::STUDENT)->first()->id;
                 }),

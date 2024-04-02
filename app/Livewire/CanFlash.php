@@ -12,7 +12,7 @@ trait CanFlash
      */
     protected function dispatchFlashDangerEvent($message)
     {
-        return $this->dispatchBrowserEvent('flash', [
+        return $this->dispatch('flash', [
             'level' => 'alert-danger',
             'message' => $message,
         ]);
@@ -26,7 +26,7 @@ trait CanFlash
      */
     protected function dispatchFlashSuccessEvent($message)
     {
-        return $this->dispatchBrowserEvent('flash', [
+        return $this->dispatch('flash', [
             'level' => 'alert-success',
             'message' => $message,
         ]);

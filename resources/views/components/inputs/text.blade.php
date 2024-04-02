@@ -1,9 +1,10 @@
-@props(['key'])
+@php
+    $key = $attributes->thatStartWith('wire:model')->first();
+@endphp
 
 <div class="input-group mb-3">
     <input
         {{ $attributes }}
-        wire:model="{{ $key }}"
         type="text"
         name="{{ $key }}"
         class="form-control @errorClass($key)"

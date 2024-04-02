@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Filters\UserFilter;
 use App\Providers\AppServiceProvider;
-use App\Scopes\VisibleToScope;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,21 +37,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'id' => 'integer',
-        AppServiceProvider::OWNER_FIELD => 'integer',
         'email_verified_at' => 'datetime',
         'role_id' => 'integer',
     ];
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-        // static::addGlobalScope(new VisibleToScope());
-    }
 
     /**
      * Get all children of the user if the user is a parent.
@@ -205,30 +192,5 @@ class User extends Authenticatable
     public function isHimself($comparedUser)
     {
         return $this->is($comparedUser);
-    }
-
-    /**
-     * Is user a model owner.
-     *
-     * @param  string  $permissionName
-     * @param  mixed  $model
-     * @return bool
-     */
-    public function isModelOwner($permissionName, $model)
-    {
-        return true;
-        $ownerField = AppServiceProvider::OWNER_FIELD;
-
-        $permission = $this->getPermission($permissionName);
-
-        if ($permission === null) {
-            return false;
-        }
-
-        if ($permission->pivot->owner_restricted === false) {
-            return true;
-        }
-
-        return $model->$ownerField === $this->id;
     }
 }

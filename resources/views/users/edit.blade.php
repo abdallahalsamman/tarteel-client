@@ -15,44 +15,48 @@
     </x-slot>
 
     <x-slot name="card_body">
-        <form method="POST" wire:submit="update">
-            @csrf
-
+        <form wire:submit="update">
             <x-inputs.text
-                key="user.name"
+                wire:model="form.name"
                 placeholder="{{ trans('validation.attributes.name') }}"
                 autofocus
                 required="required"
             />
 
             <x-inputs.text
-                key="user.phone_number"
+                wire:model="form.phone_number"
                 placeholder="{{ trans('validation.attributes.phone_number') }}"
                 autofocus
                 required="required"
             />
 
             <x-inputs.email
-                key="user.email"
+                wire:model="form.email"
                 placeholder="{{ trans('validation.attributes.email') }}"
                 autofocus
                 required="required"
             />
 
             <x-inputs.dropdown
-                key="user.role_id"
+                wire:model.live="form.role_id"
                 :options="$roles"
                 textField="name"
                 label="Select Role"
                 required="required"
             />
 
+            <div wire:loading wire:target="form.role_id">
+                Loading...
+            </div>
+
+            @if ($form->role_id == $roles->firstWhere('name', \App\Models\Role::STUDENT)->id)
             <x-inputs.dropdown
-                key="user.parent_id"
+                wire:model="form.parent_id"
                 :options="$parents"
                 textField="name"
                 label="Select Parent"
             />
+            @endif
             
             <div class="row">
                 <div class="offset-8 col-4">

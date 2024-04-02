@@ -18,26 +18,26 @@ class UsersTableSeeder extends Seeder
         UserFactory::new()->create([
             'email' => 'admin@lte.com',
             'name' => 'Admin User',
-            'role_id' => Role::whereName('admin')->first(),
+            'role_id' => Role::whereName('admin')->first()->id,
         ]);
-
 
         UserFactory::new()->create([
             'email' => 'tutor@lte.com',
             'name' => 'Tutor User',
-            'role_id' => Role::whereName('tutor')->first(),
+            'role_id' => Role::whereName('tutor')->first()->id,
         ]);
 
-        UserFactory::new()->create([
+        $parent = UserFactory::new()->create([
             'email' => 'parent@lte.com',
             'name' => 'Parent User',
-            'role_id' => Role::whereName('parent')->first(),
+            'role_id' => Role::whereName('parent')->first()->id,
         ]);
 
         UserFactory::new()->create([
             'email' => 'student@lte.com',
-            'name' => 'Student User', // Add a name to the student user to avoid 'name' column being 'null' error when trying to login as a student user.
-            'role_id' => Role::whereName('student')->first(),
+            'name' => 'Student User',
+            'parent_id' => $parent->id,
+            'role_id' => Role::whereName('student')->first()->id,
         ]);
     }
 }
