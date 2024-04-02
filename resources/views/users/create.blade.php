@@ -35,7 +35,7 @@
 
             <x-inputs.email wire:model="user.email" required="required" placeholder="{{ trans('validation.attributes.email') }}" autofocus />
 
-            <x-inputs.dropdown wire:model="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
+            <x-inputs.dropdown wire:model.live="user.role_id" label="الصلاحيّة" :options="$roles" textField="name" required="required" />
 
             <x-inputs.dropdown
                 wire:model="user.parent_id"
