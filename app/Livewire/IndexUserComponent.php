@@ -11,7 +11,7 @@ class IndexUserComponent extends Component
     use HasTable;
 
     /** @var string */
-    public $sortField = 'email';
+    public $sortField = 'created_at';
 
     /** @var string */
     public $roleId = '';

@@ -9,13 +9,14 @@
         {{ session('flash')['message'] }}
     </div>
 @endif
+
 <div
     x-data="{show : false}"
     x-cloak
     @flash.window="
         show = true;
-        $el.innerHTML = $event.detail.message;
-        $el.classList.add($event.detail.level);
+        $el.innerHTML = $event.detail[0].message;
+        $el.classList.add($event.detail[0].level);
         $el.classList.add('alert');
         setTimeout(() => { show = false; }, 3500);
     "
@@ -23,4 +24,5 @@
     role="alert"
     x-show="show"
 >
+ALASLDKASDJ
 </div>

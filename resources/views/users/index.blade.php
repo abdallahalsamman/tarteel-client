@@ -14,9 +14,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">List of Users</h3>
-                @can('for-route', ['users.create'])
-                    <a href="{{ route('users.create') }}" class="float-right">Add New</a>
-                @endcan
+                <a href="{{ route('users.create') }}" class="float-right">Add New</a>
             </div>
 
             <div class="card-body" x-data="{showModal : false, deleteId : false}">
@@ -25,7 +23,7 @@
                         <x-tables.per-page />
                         <div class="col-md-3 col-sm-12 form-group">
                             <select
-                                wire:model="roleId"
+                                wire:model.live="roleId"
                                 name="roleId"
                                 class="form-control form-control-sm custom-select custom-select-sm"
                                 value="roleId"
@@ -79,7 +77,7 @@
 
                         <x-slot name="tbody">
                             @forelse($users as $user)
-                                <tr class="@if($loop->odd) odd @endif">
+                                <tr class="@if($loop->odd) odd @endif" wire:key="user-row-{{ $user->id }}">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
@@ -87,15 +85,12 @@
                                     <td>{{ $user->role->label }}</td>
                                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                     <td>
-
-                                        @can('for-route', ['users.edit', $user])
-                                            @if(!$user->isHimself(auth()->user()))
-                                                <a href="{{ route('users.edit', $user) }}"><span class="fas fa-edit"></a></span>
-                                            @endif
-                                        @endcan
+                                        @if(!$user->isHimself(auth()->user()))
+                                            <a href="{{ route('users.edit', $user) }}"><span class="fas fa-edit"></a></span>
+                                        @endif
                                     </td>
                                     <td>
-                                        <livewire:delete-user-component :user="$user" :key="'user-'.$user->id" />
+                                        <livewire:delete-user-component :user="$user" wire:key="{{ $user->id }}"/>
                                     </td>
                                 </tr>
                             @empty

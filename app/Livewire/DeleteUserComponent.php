@@ -28,9 +28,9 @@ class DeleteUserComponent extends Component
             throw new AuthorizationException();
         }
 
-        $this->dispatchFlashSuccessEvent('User has been successfully deleted.');
-
         $this->user->delete();
+
+        $this->dispatchFlashSuccessEvent('User has been successfully deleted.');
 
         $this->dispatch('entity-deleted');
     }
