@@ -37,7 +37,7 @@
                         <!-- end div for extra filters -->
                     </div>
 
-                    <x-tables.table>
+                    <x-tables.table id="invoice-table">
 
                         <x-slot name="thead_tfoot">
                             <tr>
@@ -113,11 +113,11 @@
 
                     </x-tables.table>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <x-tables.entries-data :data="$tutoringSessions" />
 
                         <x-tables.pagination :data="$tutoringSessions" />
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="mt-3 d-flex justify-content-between">
@@ -148,3 +148,18 @@
         </div>
     </div>
 </div>
+
+@script
+<script>
+$(function () {
+    $("#invoice-table").DataTable({
+    "responsive": true,
+    "lengthChange": false,
+    "paging": true,
+    "autoWidth": false,
+    "searching": true,
+    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#invoice-table_wrapper .col-md-6:eq(0)');
+});
+</script>  
+@endscript

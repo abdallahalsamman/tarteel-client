@@ -9,12 +9,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/adminlte.css',
                 'resources/css/custom.css',
-                'resources/css/font-awesome.css',
-                'resources/css/google-font.css',
-                'resources/css/icheck-bootstrap.css',
-                'resources/js/app.js'
+                'resources/js/app.js',
             ],
             refresh: true,
         }),

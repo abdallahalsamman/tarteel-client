@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <table class="table table-bordered table-striped" role="grid">
+        <table {{ $attributes }} class="table table-bordered table-striped" role="grid">
 
             <thead>
                 {{ $thead_tfoot }}

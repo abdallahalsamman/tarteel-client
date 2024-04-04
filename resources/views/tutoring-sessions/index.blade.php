@@ -29,7 +29,7 @@
                         <x-tables.search />
                     </div>
 
-                    <x-tables.table>
+                    <x-tables.table id="users-table">
 
                         <x-slot name="thead_tfoot">
                             <tr>
@@ -100,13 +100,28 @@
 
                     </x-tables.table>
 
-                    <div class="row">
-                        <x-tables.entries-data :data="$tutoringSessions" />
+                    {{-- <div class="row"> --}}
+                        {{-- <x-tables.entries-data :data="$tutoringSessions" /> --}}
 
-                        <x-tables.pagination :data="$tutoringSessions" />
-                    </div>
+                        {{-- <x-tables.pagination :data="$tutoringSessions" /> --}}
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@script
+<script>
+$(function () {
+    $("#users-table").DataTable({
+    "responsive": true,
+    "lengthChange": false,
+    "paging": true,
+    "autoWidth": false,
+    "searching": false,
+    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#users-table_wrapper .col-md-6:eq(0)');
+});
+</script>  
+@endscript
