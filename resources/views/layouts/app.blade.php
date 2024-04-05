@@ -10,7 +10,6 @@
     x-on:resize.window="resize()"
     x-ref="body"
 >
-
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">
@@ -178,7 +177,11 @@
         </footer>
     </div>
 
+    <script src="js/demo.js"></script>
     @livewireScriptConfig
+    @vite([
+        'resources/js/app.js',
+    ])
 </body>
 
 </html>

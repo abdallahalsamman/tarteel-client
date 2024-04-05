@@ -27,6 +27,8 @@ class IndexTutoringSessionComponent extends Component
     public function render()
     {
         $user = auth()->user();
+        $this->perPage = 999999;
+
         if ($user->isAdmin()) {
             $tutoringsessions = TutoringSession::filter([
                 'search' => $this->search,

@@ -30,14 +30,14 @@
                     </div>
                 </div>
 
-                <div class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
+                <div class="dataTables_wrapper dt-bootstrap4 mt-3">
+                    {{-- <div class="row">
                         <!-- div for extra filters -->
                         <div class="col-md-3 col-sm-12 form-group"></div>
                         <!-- end div for extra filters -->
-                    </div>
+                    </div> --}}
 
-                    <x-tables.table id="invoice-table">
+                    <x-tables.table id="table">
 
                         <x-slot name="thead_tfoot">
                             <tr>
@@ -152,14 +152,14 @@
 @script
 <script>
 $(function () {
-    $("#invoice-table").DataTable({
+    $("#table").DataTable({
     "responsive": true,
     "lengthChange": false,
-    "paging": true,
+    "paging": false,
     "autoWidth": false,
     "searching": true,
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#invoice-table_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#table_wrapper .col-md-6:eq(0)');
 });
 </script>  
 @endscript

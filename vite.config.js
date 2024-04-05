@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import { globSync } from "glob";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -18,5 +19,5 @@ export default defineConfig({
     server: {
         host: true,
         hmr: { host },
-    }
+    },
 });

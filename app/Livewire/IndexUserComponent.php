@@ -28,6 +28,11 @@ class IndexUserComponent extends Component
     /** @var array */
     protected $listeners = ['entity-deleted' => 'render'];
 
+    public function mount()
+    {
+        $this->perPage = 999999;
+    }
+
     /**
      * Render the component view.
      *

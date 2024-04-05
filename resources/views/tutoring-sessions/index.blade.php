@@ -19,7 +19,7 @@
 
             <div class="card-body">
                 <div class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
+                    {{-- <div class="row">
                         <x-tables.per-page />
 
                         <!-- div for extra filters -->
@@ -27,9 +27,9 @@
                         <!-- end div for extra filters -->
 
                         <x-tables.search />
-                    </div>
+                    </div> --}}
 
-                    <x-tables.table id="users-table">
+                    <x-tables.table id="table">
 
                         <x-slot name="thead_tfoot">
                             <tr>
@@ -114,14 +114,14 @@
 @script
 <script>
 $(function () {
-    $("#users-table").DataTable({
+    $("#table").DataTable({
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
     "paging": true,
     "autoWidth": false,
-    "searching": false,
+    "searching": true,
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#users-table_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#table_wrapper .col-md-6:eq(0)');
 });
 </script>  
 @endscript
