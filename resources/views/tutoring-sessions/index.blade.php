@@ -74,12 +74,12 @@
                                     <td>{{ $tutoringSession->student->parent->name }}</td>
                                     <td>{{ $tutoringSession->student->name }}</td>
                                     @if(auth()->user()->isAdmin())
-                                    <td>{{ $tutoringSession->tutor->name }}</td>
+                                    <td><a href="{{ route('invoices.show', $tutoringSession->tutor) }}">{{ $tutoringSession->tutor->name }}</a></td>
                                     @endif
                                     <td>{{ $tutoringSession->session_date }}</td>
                                     <td dir="rtl">{{ $tutoringSession->duration }} دقيقة</td>
                                     <td>{{ $tutoringSession->subject }}</td>
-                                    <td><input type="checkbox" checked="{{ $tutoringSession->paid }}"/></td>
+                                    <td><input type="checkbox" {{ $tutoringSession->paid ? 'checked' : '' }} disabled="disabled" /></td>
                                     {{-- @if(auth()->user()->isAdmin())
                                     <td>
                                             <a href="{{ route('tutoring-sessions.edit', $tutoringSession) }}"><span class="fas fa-edit"></a></span>
