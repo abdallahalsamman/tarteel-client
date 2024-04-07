@@ -140,7 +140,7 @@
 
                                     @if(auth()->user()->isTutor())
                                     <li class="nav-item">
-                                        <a href="{{ route('invoices.show', ['user' => auth()->user()->id]) }}" class="nav-link">
+                                        <a href="{{ route('invoices.show', auth()->user()) }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>الفاتوره الشخصية</p>
                                         </a>
@@ -177,7 +177,7 @@
         </footer>
     </div>
 
-    <script src="js/demo.js"></script>
+    <script src="/js/demo.js"></script>
     @livewireScriptConfig
     @vite([
         'resources/js/app.js',

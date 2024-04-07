@@ -3,6 +3,7 @@
 use App\Livewire\EditUserComponent;
 use App\Livewire\IndexUserComponent;
 use App\Livewire\CreateUserComponent;
+use App\Livewire\ShowInvoiceComponent;
 use App\Livewire\IndexInvoiceComponent;
 use App\Livewire\AcceptedInvitationComponent;
 use App\Http\Controllers\Auth\LoginController;
@@ -40,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tutoring-sessions/{id}/edit', EditTutoringSessionComponent::class)->name('tutoring-sessions.edit');
 
     Route::get('invoices', IndexInvoiceComponent::class)->name('invoices.index');
-    Route::get('invoices/{user}', IndexInvoiceComponent::class)->name('invoices.show');
+    Route::get('invoices/{user}', ShowInvoiceComponent::class)->name('invoices.show');
 
     Route::get('users', IndexUserComponent::class)->name('users.index');
     Route::get('users/create', CreateUserComponent::class)->name('users.create');

@@ -3,24 +3,22 @@
 namespace App\Livewire;
 
 use App\Models\TutoringSession;
+use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
 
 class IndexInvoiceComponent extends Component
 {
     use HasTable;
 
-    /** @var string */
-    public $sortField = '';
-
-    // index-review
-    /** @var array */
-    protected $queryString = ['perPage', 'sortField', 'sortDirection', 'search'];
+    public $tutoringSessions;
 
     public function mount()
     {
-        $this->perPage = 999;
-        $this->sortField = 'session_date';
-        $this->sortDirection = 'desc';
+        if (! auth()->user()->isAdmin()) {
+            throw new AuthorizationException('You are not authorized to view this page.');
+        }
+
+        $this->tutoringSessions = TutoringSession::wherePaid(null)->get();
     }
 
     /**
@@ -30,22 +28,6 @@ class IndexInvoiceComponent extends Component
      */
     public function render()
     {
-        $user = auth()->user();
-        if ($user->isAdmin()) {
-            $tutoringSessions = TutoringSession::filter([
-                'search' => $this->search,
-                'orderByField' => [$this->sortField, $this->sortDirection],
-            ])->paginate($this->perPage);
-        } else {
-            $tutoringSessions = $user->tutoringSessions()->filter([
-                'search' => $this->search,
-                'orderByField' => [$this->sortField, $this->sortDirection],
-            ])->paginate($this->perPage);
-        }
-
-        $tutoringSessions->where('paid', null);
-
-        return view('invoices.index', ['tutoringSessions' => $tutoringSessions])
-            ->extends('layouts.app');
+        return view('invoices.index')->extends('layouts.app');
     }
 }

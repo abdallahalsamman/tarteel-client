@@ -19,67 +19,60 @@
                         Egypt<br>
                         Phone: (20) 0111691222
                     </div>
+
+                    @if (request()->routeIs('invoices.show'))
                     <div>
                         To<br>
-                        <b>{{ $tutoringSessions[0]->tutor->name }}</b><br>
-                        Price per Hour: {{ $tutoringSessions[0]->tutor->hourly_rate }}
+                        <b>{{ $user->name }}</b><br>
+                        Price per Hour: {{ $user->hourly_rate }}
                     </div>
                     <div>
                         Date: {{ date('M, Y') }}<br>
-                        Invoice: <b>#{{ Str::uuid() }}</b>
+                        Invoice: <b>#{{ Str::uuid() }}</b><br>
+                        <button class="btn btn-primary" wire:click="markAllAsPaid">تصفير الحساب</button>
                     </div>
+                    @endif
+
                 </div>
 
                 <div class="dataTables_wrapper dt-bootstrap4 mt-3">
-                    {{-- <div class="row">
-                        <!-- div for extra filters -->
-                        <div class="col-md-3 col-sm-12 form-group"></div>
-                        <!-- end div for extra filters -->
-                    </div> --}}
-
                     <x-tables.table id="table">
 
                         <x-slot name="thead_tfoot">
                             <tr>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">العائلة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    العائلة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">الطالب</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    الطالب
                                 </th>
                                 @if(auth()->user()->isAdmin())
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">المدرس</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    المدرس
                                 </th>
                                 @endif
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">موعد الحصة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    موعد الحصة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">المدة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    المدة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">اسم المادة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    اسم المادة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">ملاحظات</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    ملاحظات
                                 </th>
-{{-- 
+                                {{-- 
                                 @if(auth()->user()->isAdmin())
-                                <th class="sorting" dir="rtl">
+                                <th>
                                     Edit
                                 </th>
-                                <th class="sorting">
+                                <th>
                                     Delete
                                 </th>
-                                @endif --}}
+                                @endif
+                                --}}
                             </tr>
                         </x-slot>
 
@@ -89,7 +82,7 @@
                                     <td>{{ $tutoringSession->student->parent->name }}</td>
                                     <td>{{ $tutoringSession->student->name }}</td>
                                     @if(auth()->user()->isAdmin())
-                                    <td>{{ $tutoringSession->tutor->name }}</td>
+                                    <td><a href="{{ route('invoices.show', $tutoringSession->tutor) }}">{{ $tutoringSession->tutor->name }}</a></td>
                                     @endif
                                     <td>{{ $tutoringSession->session_date }}</td>
                                     <td dir="rtl">{{ $tutoringSession->duration }} دقيقة</td>
@@ -112,14 +105,9 @@
                         </x-slot>
 
                     </x-tables.table>
-
-                    {{-- <div class="row">
-                        <x-tables.entries-data :data="$tutoringSessions" />
-
-                        <x-tables.pagination :data="$tutoringSessions" />
-                    </div> --}}
                 </div>
 
+                @if (request()->routeIs('invoices.show'))
                 <div class="mt-3 d-flex justify-content-between">
                     <div>
                         <h5 class="font-weight-light">Payment Methods:</h5>
@@ -138,12 +126,13 @@
                                 </tr>
                                 <tr>
                                   <th><b>Cash:</b></th>
-                                  <td>LE {{ ($tutoringSessions->sum('duration') / 60) * $tutoringSessions[0]->tutor->hourly_rate }}</td>
+                                  <td>LE {{ ($tutoringSessions->sum('duration') / 60) * $user->hourly_rate }}</td>
                                 </tr>
                             </tbody>
                         </table>                          
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

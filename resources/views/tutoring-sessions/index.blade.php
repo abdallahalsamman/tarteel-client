@@ -33,31 +33,28 @@
 
                         <x-slot name="thead_tfoot">
                             <tr>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">العائلة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    العائلة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">الطالب</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    الطالب
                                 </th>
                                 @if(auth()->user()->isAdmin())
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('name')">المدرس</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="name" />
+                                <th>
+                                    المدرس
                                 </th>
                                 @endif
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">موعد الحصة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    موعد الحصة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">المدة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    المدة
                                 </th>
-                                <th class="sorting" dir="rtl">
-                                    <a href="#" wire:click.prevent="sortBy('label')">اسم المادة</a>
-                                    <x-tables.sort-by :sortField="$sortField" :sortDirection="$sortDirection" field="label" />
+                                <th>
+                                    اسم المادة
+                                </th>
+                                <th>
+                                    مدفوع
                                 </th>
 {{-- 
                                 @if(auth()->user()->isAdmin())
@@ -82,6 +79,7 @@
                                     <td>{{ $tutoringSession->session_date }}</td>
                                     <td dir="rtl">{{ $tutoringSession->duration }} دقيقة</td>
                                     <td>{{ $tutoringSession->subject }}</td>
+                                    <td><input type="checkbox" checked="{{ $tutoringSession->paid }}"/></td>
                                     {{-- @if(auth()->user()->isAdmin())
                                     <td>
                                             <a href="{{ route('tutoring-sessions.edit', $tutoringSession) }}"><span class="fas fa-edit"></a></span>
