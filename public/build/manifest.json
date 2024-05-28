@@ -1,12 +1,267 @@
 {
+  "resources/css/adminlte.min.css": {
+    "file": "assets/adminlte-BKHuDwa-.css",
+    "src": "resources/css/adminlte.min.css",
+    "isEntry": true
+  },
   "resources/css/custom.css": {
     "file": "assets/custom-BilvU6og.css",
     "src": "resources/css/custom.css",
+    "isEntry": true
+  },
+  "resources/css/font-awesome.css": {
+    "file": "assets/font-awesome-D1Z3Dtza.css",
+    "src": "resources/css/font-awesome.css",
+    "isEntry": true
+  },
+  "resources/css/google-font.css": {
+    "file": "assets/google-font-B1479BKo.css",
+    "src": "resources/css/google-font.css",
+    "isEntry": true
+  },
+  "resources/css/icheck-bootstrap.css": {
+    "file": "assets/icheck-bootstrap-Dp2MOOfb.css",
+    "src": "resources/css/icheck-bootstrap.css",
+    "isEntry": true
+  },
+  "resources/js/adminlte.min.js": {
+    "file": "assets/adminlte.min-DCYgbvMu.js",
+    "src": "resources/js/adminlte.min.js",
     "isEntry": true
   },
   "resources/js/app.js": {
     "file": "assets/app-CymL4jcl.js",
     "src": "resources/js/app.js",
     "isEntry": true
+  },
+  "resources/js/bootstrap.bundle.min.js": {
+    "file": "assets/bootstrap.bundle.min-CKxHTDu1.js",
+    "src": "resources/js/bootstrap.bundle.min.js",
+    "isEntry": true
+  },
+  "resources/js/demo.js": {
+    "file": "assets/demo-DmrqbqB_.js",
+    "src": "resources/js/demo.js",
+    "isEntry": true
+  },
+  "resources/js/jquery.min.js": {
+    "file": "assets/jquery.min-5GtrIU7X.js",
+    "src": "resources/js/jquery.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-bs4/css/dataTables.bootstrap4.css": {
+    "file": "assets/dataTables-BQq7wl2m.css",
+    "src": "resources/plugins/datatables-bs4/css/dataTables.bootstrap4.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css": {
+    "file": "assets/dataTables.bootstrap4-DzZwfMs3.css",
+    "src": "resources/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-bs4/js/dataTables.bootstrap4.js": {
+    "file": "assets/dataTables.bootstrap4-Dm-EB206.js",
+    "src": "resources/plugins/datatables-bs4/js/dataTables.bootstrap4.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js": {
+    "file": "assets/dataTables.bootstrap4.min-DGFZqy6L.js",
+    "src": "resources/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/css/buttons.bootstrap4.css": {
+    "file": "assets/buttons.bootstrap4-BJySk6xr.css",
+    "src": "resources/plugins/datatables-buttons/css/buttons.bootstrap4.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/css/buttons.bootstrap4.min.css": {
+    "file": "assets/buttons.bootstrap4-BJySk6xr.css",
+    "src": "resources/plugins/datatables-buttons/css/buttons.bootstrap4.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.bootstrap4.js": {
+    "file": "assets/buttons.bootstrap4-BQwGeUf7.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.bootstrap4.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.bootstrap4.min.js": {
+    "file": "assets/buttons.bootstrap4.min-BRbQ6Ufq.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.bootstrap4.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.colVis.js": {
+    "file": "assets/buttons.colVis-2WiMRP-b.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.colVis.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.colVis.min.js": {
+    "file": "assets/buttons.colVis.min-DyIcN30b.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.colVis.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.flash.js": {
+    "file": "assets/buttons.flash-U6nXhH0F.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.flash.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.flash.min.js": {
+    "file": "assets/buttons.flash.min-B3ZeqzCS.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.flash.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.html5.js": {
+    "file": "assets/buttons.html5-KtbP4eMv.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.html5.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.html5.min.js": {
+    "file": "assets/buttons.html5.min-CxIxM2ty.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.html5.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.print.js": {
+    "file": "assets/buttons.print-BMEref2T.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.print.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/buttons.print.min.js": {
+    "file": "assets/buttons.print.min-BnKk6Dxk.js",
+    "src": "resources/plugins/datatables-buttons/js/buttons.print.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/dataTables.buttons.js": {
+    "file": "assets/dataTables.buttons-D_gOnwdR.js",
+    "src": "resources/plugins/datatables-buttons/js/dataTables.buttons.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-buttons/js/dataTables.buttons.min.js": {
+    "file": "assets/dataTables.buttons.min-ChEMx073.js",
+    "src": "resources/plugins/datatables-buttons/js/dataTables.buttons.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/css/responsive.bootstrap4.css": {
+    "file": "assets/responsive.bootstrap4-D3TpbxV1.css",
+    "src": "resources/plugins/datatables-responsive/css/responsive.bootstrap4.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/css/responsive.bootstrap4.min.css": {
+    "file": "assets/responsive.bootstrap4-D3TpbxV1.css",
+    "src": "resources/plugins/datatables-responsive/css/responsive.bootstrap4.css",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/js/dataTables.responsive.js": {
+    "file": "assets/dataTables.responsive-D0VYowl6.js",
+    "src": "resources/plugins/datatables-responsive/js/dataTables.responsive.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/js/dataTables.responsive.min.js": {
+    "file": "assets/dataTables.responsive.min-CgBWDDRC.js",
+    "src": "resources/plugins/datatables-responsive/js/dataTables.responsive.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/js/responsive.bootstrap4.js": {
+    "file": "assets/responsive.bootstrap4-DESVHd7S.js",
+    "src": "resources/plugins/datatables-responsive/js/responsive.bootstrap4.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables-responsive/js/responsive.bootstrap4.min.js": {
+    "file": "assets/responsive.bootstrap4.min-Cuk6dupl.js",
+    "src": "resources/plugins/datatables-responsive/js/responsive.bootstrap4.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables/jquery.dataTables.js": {
+    "file": "assets/jquery.dataTables-0ozo1KhW.js",
+    "src": "resources/plugins/datatables/jquery.dataTables.js",
+    "isEntry": true
+  },
+  "resources/plugins/datatables/jquery.dataTables.min.js": {
+    "file": "assets/jquery.dataTables.min-CAS92S8x.js",
+    "src": "resources/plugins/datatables/jquery.dataTables.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/jszip/jszip.js": {
+    "file": "assets/jszip-WHGfd-8H.js",
+    "src": "resources/plugins/jszip/jszip.js",
+    "isEntry": true
+  },
+  "resources/plugins/jszip/jszip.min.js": {
+    "file": "assets/jszip.min-DLukrCgk.js",
+    "src": "resources/plugins/jszip/jszip.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/pdfmake/pdfmake.js": {
+    "file": "assets/pdfmake-BbsP7Bks.js",
+    "src": "resources/plugins/pdfmake/pdfmake.js",
+    "isEntry": true
+  },
+  "resources/plugins/pdfmake/pdfmake.min.js": {
+    "file": "assets/pdfmake.min-Dtp3Mw-7.js",
+    "src": "resources/plugins/pdfmake/pdfmake.min.js",
+    "isEntry": true
+  },
+  "resources/plugins/pdfmake/vfs_fonts.js": {
+    "file": "assets/vfs_fonts-DqQvgqqV.js",
+    "src": "resources/plugins/pdfmake/vfs_fonts.js",
+    "isEntry": true
+  },
+  "resources/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400-DNXCI7vV.eot",
+    "src": "resources/webfonts/fa-brands-400.eot"
+  },
+  "resources/webfonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400-oFLvx_U2.svg",
+    "src": "resources/webfonts/fa-brands-400.svg"
+  },
+  "resources/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-BMj94tJl.ttf",
+    "src": "resources/webfonts/fa-brands-400.ttf"
+  },
+  "resources/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400-CwMhTPFj.woff",
+    "src": "resources/webfonts/fa-brands-400.woff"
+  },
+  "resources/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-UEZeU8cs.woff2",
+    "src": "resources/webfonts/fa-brands-400.woff2"
+  },
+  "resources/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400-azyMXj7c.eot",
+    "src": "resources/webfonts/fa-regular-400.eot"
+  },
+  "resources/webfonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400-CLGGrRKN.svg",
+    "src": "resources/webfonts/fa-regular-400.svg"
+  },
+  "resources/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-RK6M3Auz.ttf",
+    "src": "resources/webfonts/fa-regular-400.ttf"
+  },
+  "resources/webfonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400-DtFYXIM2.woff",
+    "src": "resources/webfonts/fa-regular-400.woff"
+  },
+  "resources/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-DK7qvToU.woff2",
+    "src": "resources/webfonts/fa-regular-400.woff2"
+  },
+  "resources/webfonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900-B6e-Hhi-.eot",
+    "src": "resources/webfonts/fa-solid-900.eot"
+  },
+  "resources/webfonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900-CcuCRYoc.svg",
+    "src": "resources/webfonts/fa-solid-900.svg"
+  },
+  "resources/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-CWs4lwq8.ttf",
+    "src": "resources/webfonts/fa-solid-900.ttf"
+  },
+  "resources/webfonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900-BiAi1MSV.woff",
+    "src": "resources/webfonts/fa-solid-900.woff"
+  },
+  "resources/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-C19_HPqg.woff2",
+    "src": "resources/webfonts/fa-solid-900.woff2"
   }
 }

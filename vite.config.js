@@ -1,23 +1,13 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import { globSync } from "glob";
-import dotenv from 'dotenv';
-dotenv.config();
+import { globSync } from 'glob';
 
-const host = process.env.APP_DOMAIN;
- 
+
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                'resources/css/custom.css',
-                'resources/js/app.js',
-            ],
+            input: globSync('resources/{js,css,plugins}/**/*.{js,css}'),
             refresh: true,
         }),
     ],
-    server: {
-        host: true,
-        hmr: { host },
-    },
 });
